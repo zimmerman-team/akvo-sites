@@ -1,0 +1,19 @@
+html {
+	//background: $primary-dark;
+	body {
+		background: $white;
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+@media (min-width: $screen-md-min) {
+	.eq {
+	  display: -webkit-box;
+	  display: -webkit-flex;
+	  display: -ms-flexbox;
+	  display: flex;
+	}
+}

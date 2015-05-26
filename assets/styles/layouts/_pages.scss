@@ -1,0 +1,93 @@
+.carousel {
+	margin-bottom: 15px;
+	h1 {
+		font-weight: 700;
+		margin-bottom: 0;
+		font-size: 3em;
+	}
+	h2 {
+		margin-top: 0;
+	}
+	.text {
+		background: $primary-light;
+		text-align: center;
+		padding:10px 15px;
+		width: 100%;
+	}
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.box-wrap {
+	background: $light-grijs;
+	margin-bottom: 15px;
+	position: relative;
+	.boxlink {
+		display: block;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top:0;
+		left: 0;
+	}
+	h2 {
+		font-size: 1.3em;
+		padding:10px 15px;
+		margin: 0;
+		text-align: center;
+		height: 56px;
+	}
+	.infobar {
+		padding:3px 15px;
+		color: $white;
+		border-top: 1px solid $white;
+		border-bottom: 1px solid $white;
+		@include icons;
+		&.blog {
+			background: $infobar-blog;
+		}
+		&.news {
+			background: $infobar-news;
+		}
+		&.video {
+			background: $infobar-video;
+		}
+		&.update {
+			background: $infobar-update;
+		}
+		.type {
+			float: right;
+		}
+	}
+	img {
+		padding:10px 15px 0 15px;
+		width: 100%;
+	}
+	.excerpt {
+		padding:10px 15px;
+	}
+	.readmore {
+		padding:0 15px 10px 15px;
+	}
+}
+
+.article {
+	h1 {
+		border-bottom: 1px solid #333;
+		padding-bottom: 15px;
+	}
+}
+
+@media (min-width: $screen-md-min) {
+	.box-wrap {
+		transition:all .2s;
+		&:hover {
+			background: $grijs;
+		}
+		&:focus {
+			background: darken($grijs,20%);
+		}
+	}
+}

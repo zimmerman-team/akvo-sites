@@ -1,0 +1,28 @@
+article, .article {
+	.bg {
+		background: $light-grijs;
+		margin-bottom: 15px;
+	}
+	img {
+		width: 100%;
+	}
+	h1 {
+		text-align: center;
+		font-size: 4em;
+		font-weight: 400;
+	}
+	.meta {
+		border-top:1px solid #333;
+		border-bottom: 1px solid #333;
+		margin-bottom: 15px;
+		margin-top:15px;
+		padding:5px 0;
+		@include icons;
+		span, time {
+			margin-right: 15px;
+		}
+	}
+	.intro {
+		font-size: 1.3em;
+	}
+}

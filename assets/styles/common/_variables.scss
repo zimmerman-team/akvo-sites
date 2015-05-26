@@ -1,0 +1,52 @@
+// Glyphicons font path
+$icon-font-path:        "../fonts/";
+
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+//Fonts
+$font-family-base: 'Open Sans';
+
+//overrides
+$border-radius-base: 0;
+
+// Colors
+$white: #ffffff;
+$grijs: #e6e6e6;
+
+$light-grijs: lighten($grijs, 5%);
+
+$brand-primary: #00a99d;
+
+$primary-dark: darken($brand-primary, 18%);
+$primary-light: mix($brand-primary, $white, 40%);
+
+$footertxt: transparentize($grijs, .4);
+
+$infobar-blog: #a3d165;
+$infobar-news: #f9ba41;
+$infobar-video: #f47b50;
+$infobar-update: #54bce8;
+
+@mixin icons {
+	.type:before, .date:before {
+		font-family: 'FontAwesome';
+		margin-right: 3px;
+	}
+	.blog.type:before, &.blog .type:before {
+		content: "\f040";
+	}
+	.news.type:before, &.news .type:before {
+		content: "\f1ea";
+	}
+	.update.type:before, &.update .type:before {
+		content: "\f005";
+	}
+	.video.type:before, &.video .type:before {
+		content: "\f03d";
+	}
+	.date:before {
+		content: "\f073";
+	}
+}
