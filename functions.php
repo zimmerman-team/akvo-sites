@@ -20,6 +20,7 @@ $sage_includes = [
   'lib/extras.php',                // Custom functions
   'lib/custom-posts.php',          // Custom posts
   'lib/custom-widgets.php',        // Custom widgets G!
+  'lib/bootstrap-nav-walker.php',        // BS Nav walker
 ];
 
 foreach ($sage_includes as $file) {

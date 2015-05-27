@@ -12,6 +12,7 @@ function create_post_type() {
       'has_archive' => true,
       'menu_position' => 20,
       'menu_icon' => 'dashicons-format-aside',
+      'taxonomies' => array('category'),
       'supports' => array(
         'title',
         'editor',
@@ -33,13 +34,51 @@ function create_post_type() {
       'has_archive' => true,
       'menu_position' => 20,
       'menu_icon' => 'dashicons-media-video',
+      'taxonomies' => array('category'),
+      'supports' => array(
+        'title',
+        'editor',
+        'thumbnail', 
+        'excerpt', 
+      ),
+    )
+  );
+
+  register_post_type( 'carousel',
+    array(
+      'labels' => array(
+        'name' => __( 'Carousel items' ),
+        'singular_name' => __( 'Carousel item' )
+      ),
+      'public' => true,
+      'has_archive' => false,
+      'menu_position' => 20,
+      'menu_icon' => 'dashicons-images-alt',
+      'supports' => array(
+        'title',
+        'editor',
+        'thumbnail', 
+      ),
+    )
+  );
+
+  register_post_type( 'media',
+    array(
+      'labels' => array(
+        'name' => __( 'Media items' ),
+        'singular_name' => __( 'Media item' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'menu_position' => 20,
+      'menu_icon' => 'dashicons-book',
+      'taxonomies' => array('category'),
       'supports' => array(
         'title',
         'editor',
         'author', 
         'thumbnail', 
         'excerpt', 
-        'comments', 
       ),
     )
   );

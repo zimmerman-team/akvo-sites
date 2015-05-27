@@ -1,7 +1,7 @@
 <footer class="content-info" role="contentinfo">
 	<div class="twitter">
 		<div class="container">
-			<h4>Latest related tweets</h4>
+			<?php dynamic_sidebar('sidebar-footer-high'); ?>
 		</div>
 	</div>
 	<div class="custom">
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="socialmedia">
+			<!-- <div class="socialmedia">
 				<div class="col-md-12">
 					<h4>Follow us</h4>
 					<i class="fa fa-youtube"></i>
@@ -26,7 +26,7 @@
 					<i class="fa fa-facebook"></i>
 					<i class="fa fa-twitter"></i>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<div class="fixed">

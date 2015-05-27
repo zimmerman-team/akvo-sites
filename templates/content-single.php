@@ -3,7 +3,7 @@
     <article <?php post_class(); ?>>
       <div class="bg">
         <div class="main-image">
-          <img src="<?= get_template_directory_uri(); ?>/dist/images/placeholder800x400.jpg">
+          <?php the_post_thumbnail( 'large' ); ?>
         </div>
         <div class="row">
           <div class="col-lg-10 col-lg-offset-1">

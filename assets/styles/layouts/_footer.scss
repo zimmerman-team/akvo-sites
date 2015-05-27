@@ -1,20 +1,27 @@
 footer {
 	text-align: center;
 	color:$white;
+	h3 {
+		font-size: 18px;
+		margin-top:10px;
+	}
 	.twitter {
 		background: $primary-light;
 		padding:10px 0;
 		color:#333;
 	}
 	.custom {
+		section {
+			padding-bottom:10px 0;
+		}
 		background: $brand-primary;
 		padding:10px 0;
-		.socialmedia {
-			i {
-				font-size: 2em;
-				margin:0 10px;
-			}
-		}
+		// .socialmedia {
+		// 	i {
+		// 		font-size: 2em;
+		// 		margin:0 10px;
+		// 	}
+		// }
 		.btn {
 			background: $primary-dark;
 			color:$white;

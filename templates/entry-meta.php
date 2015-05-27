@@ -1,3 +1,3 @@
 <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>
-<span class="type blog">xxx</span>
-<span class="byline author vcard"><?= __('By', 'sage'); ?> <a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author" class="fn"><?= get_the_author(); ?></a></span>
+<span post_class('type'); ?><?php echo get_post_type(); ?></span>
+<span class="byline author vcard"><?= __('By', 'sage'); ?> <?= get_the_author(); ?></span>

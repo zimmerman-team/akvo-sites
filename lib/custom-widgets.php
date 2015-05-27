@@ -44,28 +44,59 @@ class post_widget extends WP_Widget {
     extract( $args );
 
     /* Our variables from the widget settings. */
-    $title = apply_filters('widget_title', $instance['title'] );
-    $name = $instance['name'];
-    $sex = $instance['sex'];
-    $show_sex = isset( $instance['show_sex'] ) ? $instance['show_sex'] : false;
+    $columns = $instance['columns'];
+    $type = $instance['type'];
 
     /* Before widget (defined by themes). */
-    echo $before_widget;
+    //echo $before_widget;
 
-    /* Display the widget title if one was input (before and after defined by themes). */
-    if ( $title )
-      echo $before_title . $title . $after_title;
+    //hier inhoud
+    $type2 = $type;
+    if ($type == 'news') {
+      $type2 = 'post';
+    }
+    $qargs = array(
+      'post_type' => $type2,
+      'posts_per_page' => 1
+    );
+    if ($columns == 1) {
+      $amount = 3;
+    }
+    elseif ($columns == 2) {
+      $amount = 6;
+    }
+    elseif ($columns == 1) {
+      $amount = 9;
+    }
+    else {
+      $amount = 12;
+    }
+    $query = new WP_Query( $qargs );
+    if ( $query->have_posts() ) { 
+      while ( $query->have_posts() ) {
+        $query->the_post(); ?>
 
-    /* Display name from widget settings if one was input. */
-    if ( $name )
-      printf( '<p>' . __('Hello. My name is %1$s.', 'example') . '</p>', $name );
+        <div class="col-md-<?php echo $amount; ?>">
+          <div class="box-wrap">
+          <a href="<?php the_permalink(); ?>" class="boxlink"></a>
+          <h2><?php echo get_the_title(); ?></h2>
+          <div <?php post_class('infobar'); ?>>
+            <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>
+            <span class="type"><?php echo $type; ?></span>
+          </div>
+          <?php the_post_thumbnail( 'thumb' ); ?>
+          <div class="excerpt">
+            <?php the_excerpt(); ?>
+          </div>
+        </div>
+      </div>
 
-    /* If show sex was selected, display the user's sex. */
-    if ( $show_sex )
-      printf( '<p>' . __('I am a %1$s.', 'example.') . '</p>', $sex );
+<?php    
+      }
+    }
 
     /* After widget (defined by themes). */
-    echo $after_widget;
+    //echo $after_widget;
   }
 
   /**
@@ -75,12 +106,8 @@ class post_widget extends WP_Widget {
     $instance = $old_instance;
 
     /* Strip tags for title and name to remove HTML (important for text inputs). */
-    $instance['title'] = strip_tags( $new_instance['title'] );
-    $instance['name'] = strip_tags( $new_instance['name'] );
-
-    /* No need to strip tags for sex and show_sex. */
-    $instance['sex'] = $new_instance['sex'];
-    $instance['show_sex'] = $new_instance['show_sex'];
+    $instance['type'] = $new_instance['type'];
+    $instance['columns'] = $new_instance['columns'];
 
     return $instance;
   }
@@ -93,34 +120,27 @@ class post_widget extends WP_Widget {
   function form( $instance ) {
 
     /* Set up some default widget settings. */
-    $defaults = array( 'title' => __('Example', 'example'), 'name' => __('John Doe', 'example'), 'sex' => 'male', 'show_sex' => true );
+    $defaults = array( 'type' => 'news' , 'columns' => '1');
     $instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
-    <!-- Widget Title: Text Input -->
+    <!-- Cols: Select Box -->
     <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'hybrid'); ?></label>
-      <input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
-    </p>
-
-    <!-- Your Name: Text Input -->
-    <p>
-      <label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php _e('Your Name:', 'example'); ?></label>
-      <input id="<?php echo $this->get_field_id( 'name' ); ?>" name="<?php echo $this->get_field_name( 'name' ); ?>" value="<?php echo $instance['name']; ?>" style="width:100%;" />
-    </p>
-
-    <!-- Sex: Select Box -->
-    <p>
-      <label for="<?php echo $this->get_field_id( 'sex' ); ?>"><?php _e('Sex:', 'example'); ?></label> 
-      <select id="<?php echo $this->get_field_id( 'sex' ); ?>" name="<?php echo $this->get_field_name( 'sex' ); ?>" class="widefat" style="width:100%;">
-        <option <?php if ( 'male' == $instance['format'] ) echo 'selected="selected"'; ?>>male</option>
-        <option <?php if ( 'female' == $instance['format'] ) echo 'selected="selected"'; ?>>female</option>
+      <label for="<?php echo $this->get_field_id( 'type' ); ?>"><?php _e('Type:', 'single_post'); ?></label> 
+      <select id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>" class="widefat" style="width:100%;">
+        <option <?php if ( 'news' == $instance['type'] ) echo 'selected="selected"'; ?>>news</option>
+        <option <?php if ( 'blog' == $instance['type'] ) echo 'selected="selected"'; ?>>blog</option>
+        <option <?php if ( 'video' == $instance['type'] ) echo 'selected="selected"'; ?>>video</option>
       </select>
     </p>
 
-    <!-- Show Sex? Checkbox -->
     <p>
-      <input class="checkbox" type="checkbox" <?php checked( $instance['show_sex'], true ); ?> id="<?php echo $this->get_field_id( 'show_sex' ); ?>" name="<?php echo $this->get_field_name( 'show_sex' ); ?>" /> 
-      <label for="<?php echo $this->get_field_id( 'show_sex' ); ?>"><?php _e('Display sex publicly?', 'example'); ?></label>
+      <label for="<?php echo $this->get_field_id( 'columns' ); ?>"><?php _e('Columns:', 'single_post'); ?></label> 
+      <select id="<?php echo $this->get_field_id( 'columns' ); ?>" name="<?php echo $this->get_field_name( 'columns' ); ?>" class="widefat" style="width:100%;">
+        <option <?php if ( '1' == $instance['columns'] ) echo 'selected="selected"'; ?>>1</option>
+        <option <?php if ( '2' == $instance['columns'] ) echo 'selected="selected"'; ?>>2</option>
+        <option <?php if ( '3' == $instance['columns'] ) echo 'selected="selected"'; ?>>3</option>
+        <option <?php if ( '4' == $instance['columns'] ) echo 'selected="selected"'; ?>>4</option>
+      </select>
     </p>
 
   <?php
