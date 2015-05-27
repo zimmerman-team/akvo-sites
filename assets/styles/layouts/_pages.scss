@@ -19,13 +19,19 @@
 		width: 100%;
 		height: auto;
 	}
+	.carousel-indicators { 
+		top:15px;
+		li {
+			margin-left: 2px;
+			margin-right: 2px;
+		}
+	}
 }
 
 .box-wrap {
 	background: $light-grijs;
 	margin-bottom: 15px;
 	position: relative;
-	min-height: 300px;
 	.boxlink {
 		display: block;
 		position: absolute;
@@ -121,8 +127,17 @@
 }
 
 @media (min-width: $screen-md-min) {
+
+	$font-size: 14px;
+	$line-height: 1.63;
+	$lines-to-show: 5;
+
 	.box-wrap {
 		transition:all .2s;
+		height:400px;
+		.excerpt {
+			
+		}
 		&:hover {
 			background: $grijs;
 		}

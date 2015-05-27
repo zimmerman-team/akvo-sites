@@ -13,7 +13,69 @@
 	font-size: .9em;
 }
 
-@media (min-width: $screen-md-min) {
+.navbar-toggle {
+	padding:10px 0;
+	margin:0 0 0 15px;
+}
+
+.lang {
+	.fa-inverse {
+		font-style: normal;
+	}
+}
+
+.navbar-brand {
+	padding:15px 0;
+}
+
+nav {
+	ul.navbar-nav {
+		li {
+			background: $grijs;
+			border-bottom: 1px solid $white;
+			&.current-menu-item a, a:hover, &:hover i, &.current-menu-item i, &:hover a {
+				background: $primary-light;
+				color: $white;
+			}
+			a {
+				color:#333;
+				padding: 10px 15px;
+			}
+			i {
+				margin-left:5px;
+				color: $primary-light;
+			}
+			.fa-stack {
+				margin:-5px 5px -5px -5px;
+			}
+			.fa-circle {
+				color: $brand-primary;
+			}
+		}
+		.dropdown-menu {
+			display: block;
+			position: relative;
+			top: auto;
+			left: auto;
+			float: none;
+			border:0;
+			padding:0;
+			min-width: 0;
+			box-shadow: none;
+			li {
+				border: 0;
+				border-top:1px solid $white;
+				background: $grijs;
+				text-indent: 15px;
+				a {
+					padding:10px 15px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: $screen-sm-min) {
 	nav {
 		background: $light-grijs;
 		position: relative;
@@ -23,28 +85,8 @@
 		ul.navbar-nav {
 			li {
 				float: left;
-				background: $grijs;
 				border-right: 1px solid $white;
-				&.current-menu-item a, a:hover, &:hover i, &.current-menu-item i, &:hover a {
-					background: $primary-light;
-					color: $white;
-				}
-				&.menu-item-home {
-				}
-				a {
-					color:#333;
-					padding: 10px 15px;
-				}
-				i {
-					margin-left:5px;
-					color: $primary-light;
-				}
-				.fa-stack {
-					margin:-5px 5px -5px -5px;
-				}
-				.fa-circle {
-					color: $brand-primary;
-				}
+				border-bottom: 0;
 			}
 			.dropdown:hover {
 				.dropdown-menu {
@@ -52,15 +94,15 @@
 				}
 			}
 			.dropdown-menu {
-				border:0;
-				padding:0;
-				min-width: 0;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				display: none;
+				float: left;
 				li {
-					border: 0;
-					border-top:1px solid $white;
+					text-indent: 0;
 					background: $primary-light;
 					a {
-						padding:10px 15px;
 						color:$white;
 						&:hover {
 							background: $brand-primary;

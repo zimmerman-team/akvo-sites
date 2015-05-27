@@ -5,10 +5,9 @@
   </div>
 <?php endif; ?>
 
-<?php if ( is_sticky() ) {
-	echo 'sticky';
-} ?>
-
+<?php 
+if ( !is_post_type_archive('media') ) {
+?>
 <div class="col-md-12">
 	<div class="row carousel eq">
 		<div class="col-sm-6 eq">
@@ -26,6 +25,8 @@
 		</div>
 	</div>
 </div>
+
+<?php } ?>
 
 <div class="col-md-3">
 	<div class="filters">

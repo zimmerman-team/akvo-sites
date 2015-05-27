@@ -1,13 +1,13 @@
 <header class="banner" role="banner">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6">
+    <div class="row hidden-xs">
+      <div class="col-sm-6">
         <a class="brand" href="<?= esc_url(home_url('/')); ?>">
           <?php //bloginfo('name'); ?>
           <img src="<?= get_template_directory_uri(); ?>/dist/images/logo-sample.svg">
         </a>
       </div>
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <?php get_template_part('templates/searchform'); ?>
       </div>
     </div>
@@ -19,6 +19,26 @@
             <span class="sr-only"><?= __('Toggle navigation', 'sage'); ?></span>
             <i class="fa fa-bars fa-2x"></i>
           </button>
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".search-collapse">
+            <span class="sr-only"><?= __('Toggle search', 'sage'); ?></span>
+            <i class="fa fa-search fa-2x"></i>
+          </button>
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="">
+            <span class="lang">
+              <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa-stack-1x fa-inverse">NL</i>
+              </span>
+            </span>
+          </button>
+
+          <a class="navbar-brand visible-xs" href="#"><img src="<?= get_template_directory_uri(); ?>/dist/images/logo-sample.svg"></a>
+        </div>
+
+        <div class="collapse search-collapse">
+          <?php get_template_part('templates/searchform'); ?>
         </div>
         
         <nav class="collapse navbar-collapse" role="navigation">
@@ -29,7 +49,7 @@
           endif;
           ?>
 
-          <span class="lang">
+          <span class="lang hidden-xs">
             <span class="fa-stack fa-lg">
               <i class="fa fa-circle fa-stack-2x"></i>
               <i class="fa-stack-1x fa-inverse">NL</i>
