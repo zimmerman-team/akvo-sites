@@ -73,8 +73,12 @@ function widgets_init() {
   ]);
 
   register_sidebar([
-    'name'          => __('Homepage', 'sage'),
-    'id'            => 'sidebar-homepage'
+    'name'          => __('Homepage row 1', 'sage'),
+    'id'            => 'sidebar-homepage1'
+  ]);
+  register_sidebar([
+    'name'          => __('Homepage row 2', 'sage'),
+    'id'            => 'sidebar-homepage2'
   ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');

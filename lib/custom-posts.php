@@ -34,12 +34,12 @@ function create_post_type() {
       'has_archive' => true,
       'menu_position' => 20,
       'menu_icon' => 'dashicons-media-video',
-      'taxonomies' => array('category'),
+      //'taxonomies' => array('category'),
       'supports' => array(
         'title',
         'editor',
-        'thumbnail', 
-        'excerpt', 
+        //'thumbnail', 
+        //'excerpt', 
       ),
     )
   );
@@ -54,6 +54,7 @@ function create_post_type() {
       'has_archive' => false,
       'menu_position' => 20,
       'menu_icon' => 'dashicons-images-alt',
+      'exclude_from_search' => true,
       'supports' => array(
         'title',
         'editor',
@@ -82,7 +83,22 @@ function create_post_type() {
       ),
     )
   );
+}
 
+function convertYoutubeImg($string) {
+  return preg_replace(
+    "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+    "http://i1.ytimg.com/vi/$2/mqdefault.jpg",
+    $string
+  );
+}
+
+function convertYoutube($string) {
+  return preg_replace(
+      "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+      "<iframe src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
+      $string
+    );
 }
 
 ?>

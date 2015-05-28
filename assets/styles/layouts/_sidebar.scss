@@ -1,0 +1,33 @@
+.filters {
+	background: $light-grijs;
+	padding:10px 15px;
+	h4 {
+		margin-top: 0;
+	}
+	#uwpqsf_id {
+		border: 0;
+		span {
+			font-weight: 400 !important;
+			margin:0 0 5px 0;
+			padding: 0;
+		}
+		label {
+			font-weight: 400 !important;
+			input {
+				margin-right: 5px;
+			}
+		}
+		select {
+			margin: 0;
+		}
+		#uwpqsf_btn {
+			text-align: left;
+			padding-top: 10px;
+			margin-bottom: 0;
+			input {
+				@extend .btn;
+				@extend .btn-default;
+			}
+		}
+	}
+}

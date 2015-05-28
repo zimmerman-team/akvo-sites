@@ -1,9 +1,24 @@
+.btn-default {
+	background: $brand-primary;
+	color:$white;
+	transition:all .2s;
+	&:hover, &:focus {
+		background: $primary-dark;
+		color:$white;
+	}
+}
+
+a {
+	transition:all .2s;
+}
+
 .carousel {
 	margin-bottom: 15px;
 	overflow: hidden;
+	position: relative;
 	h1 {
 		font-weight: 700;
-		margin-bottom: 0;
+		margin-bottom: 15px;
 		font-size: 3em;
 	}
 	h2 {
@@ -14,6 +29,7 @@
 		text-align: center;
 		padding:10px 15px;
 		width: 100%;
+		transition:all .2s;
 	}
 	img {
 		width: 100%;
@@ -26,19 +42,38 @@
 			margin-right: 2px;
 		}
 	}
+	&.clickable {
+		&:hover {
+			.text {
+				background: darken($primary-light, 10%);
+			}
+		}
+	}
+}
+
+.main-image {
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.boxlink {
+	display: block;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left: 0;
+	z-index: 99;
 }
 
 .box-wrap {
 	background: $light-grijs;
 	margin-bottom: 15px;
 	position: relative;
-	.boxlink {
-		display: block;
-		position: absolute;
-		height: 100%;
+	&.home {
 		width: 100%;
-		top:0;
-		left: 0;
 	}
 	h2 {
 		font-size: 1.3em;
@@ -53,14 +88,17 @@
 		border-top: 1px solid $white;
 		border-bottom: 1px solid $white;
 		@include icons;
-		&.blog {
+		&.blog, &.type-blog {
 			background: $infobar-blog;
 		}
-		&.post {
+		&.post, &.type-post {
 			background: $infobar-news;
 		}
-		&.video {
+		&.video, &.type-video {
 			background: $infobar-video;
+		}
+		&.page {
+			background: $infobar-page;
 		}
 		&.update {
 			background: $infobar-update;
@@ -103,14 +141,6 @@
     column-gap: 50px;
 }
 
-.filters {
-	background: $light-grijs;
-	padding:10px 15px;
-	h4 {
-		margin-top: 0;
-	}
-}
-
 .comments {
 	footer {
 		text-align: left;
@@ -126,6 +156,21 @@
 	}
 }
 
+.embed-container { 
+	position: relative; 
+	padding-bottom: 56.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%;
+	iframe, object, embed {
+		position: absolute; 
+		top: 0; 
+		left: 0; 
+		width: 100%; 
+		height: 100%; 
+	}
+}
+
 @media (min-width: $screen-md-min) {
 
 	$font-size: 14px;
@@ -134,7 +179,10 @@
 
 	.box-wrap {
 		transition:all .2s;
-		height:400px;
+		height:370px;
+		&.home {
+			height: auto;
+		}
 		.excerpt {
 			
 		}

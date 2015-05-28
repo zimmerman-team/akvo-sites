@@ -9,7 +9,7 @@ $sidebar-sm-columns:    4;
 $font-family-base: 'Open Sans';
 
 //overrides
-$border-radius-base: 0;
+$border-radius-base: 3px;
 
 // Colors
 $white: #ffffff;
@@ -28,16 +28,17 @@ $infobar-blog: #a3d165;
 $infobar-news: #f9ba41;
 $infobar-video: #f47b50;
 $infobar-update: #54bce8;
+$infobar-page: #6d3a7d;
 
 @mixin icons {
 	.type:before, .date:before {
 		font-family: 'FontAwesome';
 		margin-right: 3px;
 	}
-	.blog.type:before, &.blog .type:before {
+	.blog.type:before, &.blog .type:before, &.type-blog .type:before {
 		content: "\f040";
 	}
-	.post.type:before, &.post .type:before {
+	.post.type:before, &.post .type:before, &.type-post .type:before {
 		content: "\f1ea";
 	}
 	.update.type:before, &.update .type:before {
@@ -45,6 +46,9 @@ $infobar-update: #54bce8;
 	}
 	.video.type:before, &.video .type:before {
 		content: "\f03d";
+	}
+	.page.type:before, &.page .type:before {
+		content: "\f016";
 	}
 	.date:before {
 		content: "\f073";

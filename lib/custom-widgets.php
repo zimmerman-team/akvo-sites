@@ -43,6 +43,12 @@ class post_widget extends WP_Widget {
   function widget( $args, $instance ) {
     extract( $args );
 
+    if (!isset($do_not_duplicate)) {
+      global $do_not_duplicate;
+      $do_not_duplicate[] = "";
+    }
+
+
     /* Our variables from the widget settings. */
     $columns = $instance['columns'];
     $type = $instance['type'];
@@ -57,7 +63,8 @@ class post_widget extends WP_Widget {
     }
     $qargs = array(
       'post_type' => $type2,
-      'posts_per_page' => 1
+      'posts_per_page' => 1,
+      'post__not_in' => $do_not_duplicate
     );
     if ($columns == 1) {
       $amount = 3;
@@ -65,7 +72,7 @@ class post_widget extends WP_Widget {
     elseif ($columns == 2) {
       $amount = 6;
     }
-    elseif ($columns == 1) {
+    elseif ($columns == 3) {
       $amount = 9;
     }
     else {
@@ -74,25 +81,43 @@ class post_widget extends WP_Widget {
     $query = new WP_Query( $qargs );
     if ( $query->have_posts() ) { 
       while ( $query->have_posts() ) {
-        $query->the_post(); ?>
+        $query->the_post();
 
-        <div class="col-md-<?php echo $amount; ?>">
-          <div class="box-wrap">
+        if ($type == 'video') {
+          $thumb = convertYoutubeImg(get_post_meta( get_the_ID(), '_video_extra_boxes_url', true ));
+        }
+        else {
+          if (has_post_thumbnail()) {
+            $thumb_id = get_post_thumbnail_id();
+            $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
+            $thumb = $thumb_url_array[0];
+          }
+          else {
+            $thumb = get_template_directory_uri().'/dist/images/placeholder800x400.jpg';
+          }
+        }
+
+        ?>
+
+        <div class="eq col-md-<?php echo $amount; ?>">
+          <div class="box-wrap home">
           <a href="<?php the_permalink(); ?>" class="boxlink"></a>
           <h2><?php echo get_the_title(); ?></h2>
           <div <?php post_class('infobar'); ?>>
             <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>
             <span class="type"><?php echo $type; ?></span>
           </div>
-          <?php the_post_thumbnail( 'thumb' ); ?>
+          <img src="<?php echo $thumb; ?>">
           <div class="excerpt">
             <?php the_excerpt(); ?>
           </div>
         </div>
       </div>
 
-<?php    
+<?php 
+        $do_not_duplicate[] = get_the_ID();  
       }
+      wp_reset_postdata();
     }
 
     /* After widget (defined by themes). */

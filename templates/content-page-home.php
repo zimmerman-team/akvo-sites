@@ -59,5 +59,13 @@ if ( $query_carousel->have_posts() ) { ?>
 }
 
 ?>
-
-<?php dynamic_sidebar('sidebar-homepage'); ?>
+<div class="col-md-12">
+	<div class="row eq">
+		<?php dynamic_sidebar('sidebar-homepage1'); ?>
+	</div>
+</div>
+<div class="col-md-12">
+	<div class="row eq">
+		<?php dynamic_sidebar('sidebar-homepage2'); ?>
+	</div>
+</div>

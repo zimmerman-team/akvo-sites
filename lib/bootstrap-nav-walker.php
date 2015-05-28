@@ -111,7 +111,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			 * property is NOT null we apply it as the class name for the glyphicon.
 			 */
 			if ( ! empty( $item->attr_title ) )
-				$item_output .= '<a'. $attributes .'><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
+				$item_output .= '<a'. $attributes .'><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>';
 			elseif ( $item->title == 'Home' )
 				$item_output .= '<a'. $attributes .'><span class="fa-stack">
 								<span class="fa fa-circle fa-stack-2x"></span>
@@ -210,3 +210,23 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		}
 	}
 }
+
+function additional_active_item_classes($classes = array(), $menu_item = false){
+    global $wp_query;
+    $post_type = get_post_type();
+
+    // echo 'type='.$post_type;
+    // echo 'attr='.$menu_item->attr_title;
+
+    // echo "<pre>";
+    // var_dump($menu_item);
+    // echo "</pre>";
+
+
+    if ( $menu_item->attr_title == $post_type && (is_post_type_archive($post_type) || is_singular($post_type)) ) {
+        $classes[] = 'current-menu-item';
+    }
+
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'additional_active_item_classes', 10, 2 );

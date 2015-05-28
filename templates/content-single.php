@@ -3,7 +3,19 @@
     <article <?php post_class(); ?>>
       <div class="bg">
         <div class="main-image">
-          <?php the_post_thumbnail( 'large' ); ?>
+          <?php 
+          if (get_post_type() == 'video') {
+            $url = convertYoutube(get_post_meta( get_the_ID(), '_video_extra_boxes_url', true ));
+            ?>
+            <div class='embed-container'>
+              <?php echo $url; ?>
+            </div>
+            <?php
+          }
+
+          else the_post_thumbnail( 'large' ); 
+          
+          ?>
         </div>
         <div class="row">
           <div class="col-lg-10 col-lg-offset-1">

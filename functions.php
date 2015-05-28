@@ -21,6 +21,8 @@ $sage_includes = [
   'lib/custom-posts.php',          // Custom posts
   'lib/custom-widgets.php',        // Custom widgets G!
   'lib/bootstrap-nav-walker.php',        // BS Nav walker
+  'lib/search-filter.php',        // Ajax filter search customize
+  'plugins/boxes.php',        // Custom input fields
 ];
 
 foreach ($sage_includes as $file) {

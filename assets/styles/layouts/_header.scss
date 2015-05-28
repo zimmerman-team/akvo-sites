@@ -33,8 +33,11 @@ nav {
 		li {
 			background: $grijs;
 			border-bottom: 1px solid $white;
-			&.current-menu-item a, a:hover, &:hover i, &.current-menu-item i, &:hover a {
+			&.current-menu-item a {
 				background: $primary-light;
+				color: $white;
+			}
+			&.current-menu-item i {
 				color: $white;
 			}
 			a {
@@ -51,6 +54,9 @@ nav {
 			.fa-circle {
 				color: $brand-primary;
 			}
+			.glyphicon {
+				display: none;
+			}
 		}
 		.dropdown-menu {
 			display: block;
@@ -65,10 +71,17 @@ nav {
 			li {
 				border: 0;
 				border-top:1px solid $white;
-				background: $grijs;
 				text-indent: 15px;
+				&.current-menu-item {
+					a {
+						background: $primary-light;
+						color:$white;
+					}
+				}
 				a {
 					padding:10px 15px;
+					background: $grijs;
+					color:#333;
 				}
 			}
 		}
@@ -87,6 +100,13 @@ nav {
 				float: left;
 				border-right: 1px solid $white;
 				border-bottom: 0;
+				a:hover, &:hover a {
+					background: $primary-light;
+					color: $white;
+				}
+				&:hover i {
+					color: $white;
+				}
 			}
 			.dropdown:hover {
 				.dropdown-menu {
@@ -102,6 +122,11 @@ nav {
 				li {
 					text-indent: 0;
 					background: $primary-light;
+					&.current-menu-item {
+						a {
+							background: $brand-primary;
+						}
+					}
 					a {
 						color:$white;
 						&:hover {
