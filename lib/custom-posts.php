@@ -109,11 +109,11 @@ function blokmaker($cols, $types) {
   else {
     if (has_post_thumbnail()) {
       $thumb_id = get_post_thumbnail_id();
-      $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
+      $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-medium', true);
       $thumb = $thumb_url_array[0];
     }
     else {
-      $thumb = get_template_directory_uri().'/dist/images/placeholder800x400.jpg';
+      $thumb = get_template_directory_uri().'/dist/images/placeholder800x400-320x180.jpg';
     }
   }
 
@@ -121,7 +121,9 @@ function blokmaker($cols, $types) {
   <div class="col-md-<?php echo $cols; ?> eq">
     <div class="box-wrap <?php if(is_front_page()) echo 'home'; ?>">
       <a href="<?php the_permalink(); ?>" class="boxlink"></a>
-      <h2><?php the_title(); ?></h2>
+      <div class="header-wrap">
+        <h2><?php the_title(); ?></h2>
+      </div>
       <div <?php post_class('infobar'); ?>>
         <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>
         <span class="type"><?php echo $types; ?></span>
@@ -133,6 +135,13 @@ function blokmaker($cols, $types) {
     </div>
   </div>
   <?php
+}
+
+add_action( 'after_setup_theme', 'akvo_custom_thumbnail_size' );
+function akvo_custom_thumbnail_size(){
+    add_image_size( 'thumb-small', 224, 126, true ); // Hard crop to exact dimensions (crops sides or top and bottom)
+    add_image_size( 'thumb-medium', 320, 180, true ); 
+    add_image_size( 'thumb-large', 480, 480, true );
 }
 
 ?>

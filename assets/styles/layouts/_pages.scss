@@ -72,15 +72,21 @@ a {
 	background: $light-grijs;
 	margin-bottom: 15px;
 	position: relative;
+	.header-wrap {
+		height: 60px;
+		padding:10px 15px;
+		display: table;
+		text-align: center;
+		width: 100%;
+		h2 {
+			font-size: 1.3em;
+			margin: 0;
+			display: table-cell;
+  			vertical-align: middle;
+		}
+	}
 	&.home {
 		width: 100%;
-	}
-	h2 {
-		font-size: 1.3em;
-		padding:10px 15px;
-		margin: 0;
-		text-align: center;
-		height: 56px;
 	}
 	.infobar {
 		padding:3px 15px;
@@ -102,6 +108,10 @@ a {
 		}
 		&.update {
 			background: $infobar-update;
+		}
+		&.media {
+			margin-top:0;
+			background: $infobar-page;
 		}
 		.type {
 			float: right;
