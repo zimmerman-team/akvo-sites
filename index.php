@@ -9,9 +9,10 @@
 
 if ( is_post_type_archive('media') ) $type = 'media';
 elseif ( is_post_type_archive('blog') ) $type = 'blog';
+elseif ( is_post_type_archive('video') ) $type = 'video';
 else $type = 'post';
 
-if ( $type != 'media' ) {
+if ( $type != 'media' || $type != 'video' ) {
 
 	//query voor sticky/featured voor in de top balk
 	$args = array(
@@ -71,6 +72,9 @@ if ( $type != 'media' ) {
 		}
 		elseif ( is_post_type_archive('media') ) {
 			echo do_shortcode( '[ULWPQSF id=53 formtitle=0]' );
+		}
+		elseif ( is_post_type_archive('video') ) {
+			//echo do_shortcode( '[ULWPQSF id=53 formtitle=0]' );
 		}
 		else {
 			echo do_shortcode( '[ULWPQSF id=49 formtitle=0]' );

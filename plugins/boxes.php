@@ -109,9 +109,33 @@ function video_extra_boxes() {
 		'name' => __( 'Youtube URL', 'cmb2' ),
 		'desc' => __( 'Enter the Youtube video URL', 'cmb2' ),
 		'id'   => $prefix . 'url',
-		'type' => 'text_url',
+		'type' => 'oembed',
 		// 'protocols' => array('http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet'), // Array of allowed protocols
 		// 'repeatable' => true,
+	) );
+}
+
+add_action( 'cmb2_init', 'carousel_extra' );
+function carousel_extra() {
+	$prefix = '_carousel_extra_boxes_';
+
+	$cmb_vid = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Additional fields', 'cmb2' ),
+		'object_types'  => array( 'carousel'), // Post type
+		//'show_on_cb'    => 'yourprefix_show_if_front_page', // function should return a bool value
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // true to keep the metabox closed by default
+	) );
+
+	$cmb_vid->add_field( array(
+		'name' => __( 'Linkthru URL', 'cmb2' ),
+		'desc' => __( 'Enter url where this slide should link to', 'cmb2' ),
+		'id'   => $prefix . 'url',
+		'type' => 'text_url',
 	) );
 }
 
@@ -130,7 +154,7 @@ function custom_boxes() {
 	$cmb_demo = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
 		'title'         => __( 'Additional fields', 'cmb2' ),
-		'object_types'  => array( 'page', ), // Post type
+		'object_types'  => array( '', ), // Post type
 		'show_on_cb'    => 'yourprefix_show_if_front_page', // function should return a bool value
 		'context'       => 'normal',
 		'priority'      => 'high',

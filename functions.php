@@ -23,6 +23,7 @@ $sage_includes = [
   'lib/bootstrap-nav-walker.php',        // BS Nav walker
   'lib/search-filter.php',        // Ajax filter search customize
   'plugins/boxes.php',        // Custom input fields
+  'lib/customize-theme.php',        // Theme customizer
 ];
 
 foreach ($sage_includes as $file) {

@@ -34,8 +34,13 @@ if ( $query_carousel->have_posts() ) { ?>
 			$content = get_the_content();
 			$content = apply_filters( 'the_content', get_the_content() );
 			$content = str_replace( ']]>', ']]&gt;', $content );
+
+			$linksto = get_post_meta( get_the_ID(), '_carousel_extra_boxes_url', true );
 	?>
-					<div class="item <?php if($i == 0) echo 'active' ; ?>">
+					<div class="item <?php if(!empty($linksto)) echo 'clickable '; if($i == 0) echo 'active' ; ?>">
+						<?php 
+						if(!empty($linksto)) echo '<a href="'.$linksto.'" class="boxlink"></a>';
+						?>
 						<div class="col-sm-6">
 							<div class="pic">
 								<?php the_post_thumbnail( 'large' ); ?>

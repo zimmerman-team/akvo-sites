@@ -42,11 +42,11 @@ a {
 			margin-right: 2px;
 		}
 	}
-	&.clickable {
-		&:hover {
-			.text {
-				background: darken($primary-light, 10%);
-			}
+}
+.clickable {
+	&:hover {
+		.text {
+			background: darken($primary-light, 10%);
 		}
 	}
 }

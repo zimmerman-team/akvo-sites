@@ -3,8 +3,18 @@
     <div class="row hidden-xs">
       <div class="col-sm-6">
         <a class="brand" href="<?= esc_url(home_url('/')); ?>">
-          <?php //bloginfo('name'); ?>
-          <img src="<?= get_template_directory_uri(); ?>/dist/images/logo-sample.svg">
+          <?php if ( get_theme_mod( 'akvo_logo' ) ) : 
+          // set the image url
+          $image_url = esc_url( get_theme_mod( 'akvo_logo' ) );
+          // store the image ID in a var
+          $image_id = pn_get_attachment_id_from_url($image_url);
+          // retrieve the thumbnail size of our image
+          $image_thumb = wp_get_attachment_image_src($image_id, 'medium');
+          ?>
+            <img src='<?php echo $image_thumb[0]; ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'>
+          <?php else : ?>
+            <img src="<?= get_template_directory_uri(); ?>/dist/images/logo-sample.svg">
+          <?php endif; ?>
         </a>
       </div>
       <div class="col-sm-6">
