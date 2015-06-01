@@ -123,13 +123,13 @@ a {
 			background: $infobar-video;
 		}
 		&.map, &.type-map {
-			background: $infobar-video;
+			background: $infobar-map;
 		}
 		&.project, &.type-project {
-			background: $infobar-video;
+			background: $infobar-project;
 		}
 		&.testimonial, &.type-testimonial {
-			background: $infobar-video;
+			background: $infobar-testimonial;
 		}
 		&.page {
 			background: $infobar-page;
@@ -139,7 +139,7 @@ a {
 		}
 		&.media {
 			margin-top:0;
-			background: $infobar-page;
+			background: $infobar-media;
 		}
 		.type {
 			float: right;

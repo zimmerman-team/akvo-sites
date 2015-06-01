@@ -82,6 +82,55 @@ function akvo_customize_register( $wp_customize ) {
 		'section'    => 'akvo_color',
 		'settings'   => 'info_bar_page',
 	) ) );
+	//bar
+	$wp_customize->add_setting( 'info_bar_project' , array(
+	    'default'     => '#6d3a7d',
+	    'transport'   => 'postMessage',
+	    'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'info_bar_project', array(
+		'label'        => __( 'Project Update Color', 'sage' ),
+		'section'    => 'akvo_color',
+		'settings'   => 'info_bar_project',
+	) ) );
+	//bar
+	$wp_customize->add_setting( 'info_bar_map' , array(
+	    'default'     => '#6d3a7d',
+	    'transport'   => 'postMessage',
+	    'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'info_bar_map', array(
+		'label'        => __( 'Map Color', 'sage' ),
+		'section'    => 'akvo_color',
+		'settings'   => 'info_bar_map',
+	) ) );
+	//bar
+	$wp_customize->add_setting( 'info_bar_testimonial' , array(
+	    'default'     => '#6d3a7d',
+	    'transport'   => 'postMessage',
+	    'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'info_bar_testimonial', array(
+		'label'        => __( 'Testimonial Color', 'sage' ),
+		'section'    => 'akvo_color',
+		'settings'   => 'info_bar_testimonial',
+	) ) );
+	//bar
+	$wp_customize->add_setting( 'info_bar_media' , array(
+	    'default'     => '#6d3a7d',
+	    'transport'   => 'postMessage',
+	    'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'info_bar_media', array(
+		'label'        => __( 'Media item Color', 'sage' ),
+		'section'    => 'akvo_color',
+		'settings'   => 'info_bar_media',
+	) ) );
+	
 
 	//logo
 	$wp_customize->add_section( 'akvo_logo_section' , array(
@@ -95,6 +144,27 @@ function akvo_customize_register( $wp_customize ) {
 	    'section'  => 'akvo_logo_section',
 	    'settings' => 'akvo_logo',
 	) ) );
+
+	//fonts
+
+	$wp_customize->add_section( 'akvo_font_section' , array(
+	    'title'       => __( 'Font', 'sage' ),
+	    'priority'    => 30,
+	    'description' => 'Select site typography',
+	) );
+	$wp_customize->add_setting( 'akvo_font', array(
+	     'default' => 'Open Sans',
+	     'transport'   => 'postMessage',
+	));
+	$wp_customize->add_control( 'akvo_font', array(
+			'type' 		=> 'select',
+		    'label'    => __( 'Font', 'sage' ),
+		    'section'  => 'akvo_font_section',
+		    'settings' => 'akvo_font',
+		    'choices' => array(
+	            'Open Sans' => 'Open Sans',
+	            'Bla Sans' => 'Bla Sans',
+	)));
 
 	$wp_customize->remove_section( 'nav');
 	$wp_customize->remove_section( 'static_front_page');
@@ -155,12 +225,32 @@ function create_scss() {
 	$info_bar_page = get_theme_mod('info_bar_page');
 	if (empty( $info_bar_page )) $info_bar_page = '#6d3a7d';
 
+	$info_bar_media = get_theme_mod('info_bar_media');
+	if (empty( $info_bar_media )) $info_bar_media = '#6d3a7d';
+
+	$info_bar_project = get_theme_mod('info_bar_project');
+	if (empty( $info_bar_project )) $info_bar_project = '#6d3a7d';
+
+	$info_bar_map = get_theme_mod('info_bar_map');
+	if (empty( $info_bar_map )) $info_bar_map = '#6d3a7d';
+
+	$info_bar_testimonial = get_theme_mod('info_bar_testimonial');
+	if (empty( $info_bar_testimonial )) $info_bar_testimonial = '#6d3a7d';
+
+	$font = get_theme_mod('akvo_font');
+	if (empty( $font )) $font = '\'Open Sans\'';
+
 	$current = "\$brand-primary: $main_color;\n"
 	."\$infobar-blog: $info_bar_blog;\n"
 	."\$infobar-news: $info_bar_news;\n"
 	."\$infobar-video: $info_bar_video;\n"
 	."\$infobar-update: $info_bar_update;\n"
 	."\$infobar-page: $info_bar_page;\n";
+	."\$infobar-media: $info_bar_media;\n";
+	."\$infobar-project: $info_bar_project;\n";
+	."\$infobar-map: $info_bar_map;\n";
+	."\$infobar-testimonial: $info_bar_testimonial;\n";
+	."\$font-family-base: $font;\n";
 	// Write the contents back to the file
 	file_put_contents($file, $current);
 	return false;
