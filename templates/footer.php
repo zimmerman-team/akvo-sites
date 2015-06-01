@@ -7,7 +7,7 @@
 	<div class="custom">
 		<div class="container">
 			<?php dynamic_sidebar('sidebar-footer'); ?>
-			<div class="newsletter">
+			<!-- <div class="newsletter">
 				<h4>Subscribe to our newsletter</h4>
 				<div class="col-md-6 col-md-offset-3">
 					<div class="input-group">
@@ -17,7 +17,7 @@
 						</span>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- <div class="socialmedia">
 				<div class="col-md-12">
 					<h4>Follow us</h4>

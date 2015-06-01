@@ -12,8 +12,8 @@ article, .article {
 		font-weight: 400;
 	}
 	.meta {
-		border-top:1px solid #333;
-		border-bottom: 1px solid #333;
+		border-top:1px solid darken($grijs,15%);
+		border-bottom: 1px solid darken($grijs,15%);
 		margin-bottom: 15px;
 		margin-top:15px;
 		padding:5px 10px;
@@ -21,8 +21,26 @@ article, .article {
 		span, time {
 			margin-right: 15px;
 		}
+		.type, .author {
+			display: none;
+		}
 	}
 	.intro {
 		font-size: 1.3em;
+	}
+}
+
+.social {
+	margin-top:-5px;
+	float: right;
+}
+
+@media (min-width: $screen-md-min) {
+	article, .article {
+		.meta {
+			.type, .author {
+				display: inline;
+			}
+		}
 	}
 }

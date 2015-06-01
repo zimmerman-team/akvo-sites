@@ -47,8 +47,8 @@ function create_post_type() {
   register_post_type( 'carousel',
     array(
       'labels' => array(
-        'name' => __( 'Carousel items' ),
-        'singular_name' => __( 'Carousel item' )
+        'name' => __( 'Carousel' ),
+        'singular_name' => __( 'Carousel slide' )
       ),
       'public' => true,
       'has_archive' => false,
@@ -66,7 +66,7 @@ function create_post_type() {
   register_post_type( 'media',
     array(
       'labels' => array(
-        'name' => __( 'Media items' ),
+        'name' => __( 'Media library' ),
         'singular_name' => __( 'Media item' )
       ),
       'public' => true,
@@ -74,6 +74,66 @@ function create_post_type() {
       'menu_position' => 20,
       'menu_icon' => 'dashicons-book',
       'taxonomies' => array('category'),
+      'supports' => array(
+        'title',
+        'editor',
+        'author', 
+        'thumbnail', 
+        'excerpt', 
+      ),
+    )
+  );
+
+  register_post_type( 'testimonial',
+    array(
+      'labels' => array(
+        'name' => __( 'Testimonials' ),
+        'singular_name' => __( 'Testimonial' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'menu_position' => 20,
+      'menu_icon' => 'dashicons-megaphone',
+      'supports' => array(
+        'title',
+        'editor',
+        'author', 
+        'thumbnail', 
+        'excerpt', 
+      ),
+    )
+  );
+
+  register_post_type( 'poject',
+    array(
+      'labels' => array(
+        'name' => __( 'Project updates' ),
+        'singular_name' => __( 'Project update' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'menu_position' => 20,
+      'menu_icon' => 'dashicons-hammer',
+      'supports' => array(
+        'title',
+        'editor',
+        'author', 
+        'thumbnail', 
+        'excerpt', 
+      ),
+    )
+  );
+
+  register_post_type( 'map',
+    array(
+      'labels' => array(
+        'name' => __( 'Maps' ),
+        'singular_name' => __( 'Map' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'menu_position' => 20,
+      'menu_icon' => 'dashicons-location-alt',
       'supports' => array(
         'title',
         'editor',
@@ -105,15 +165,29 @@ function blokmaker($cols, $types) {
 
   if ($types == 'video') {
     $thumb = convertYoutubeImg(get_post_meta( get_the_ID(), '_video_extra_boxes_url', true ));
+    $thumb = '<img src="'.$thumb.'">';
+  }
+  elseif ($types == 'media') {
+    $filename = get_post_meta( get_the_ID(), '_media_lib_file', true );
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if ($ext == 'pdf') $fa = 'fa-file-pdf-o';
+    elseif (in_array($ext, array('doc','docx'), true )) $fa = 'fa-file-word-o';
+    elseif (in_array($ext, array('xls','xlsx'), true )) $fa = 'fa-file-excel-o';
+    elseif (in_array($ext, array('ppt','pptx'), true )) $fa = 'fa-file-powerpoint-o';
+    elseif (in_array($ext, array('zip','rar','7z'), true )) $fa = 'fa-file-archive-o';
+    else $fa = 'fa-file-o';
+    $thumb = '<div class="icon-wrap"><i class="fa fa-inverse fa-4x '.$fa.'"></i></div>';
   }
   else {
     if (has_post_thumbnail()) {
       $thumb_id = get_post_thumbnail_id();
       $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-medium', true);
       $thumb = $thumb_url_array[0];
+      $thumb = '<img src="'.$thumb.'">';
     }
     else {
       $thumb = get_template_directory_uri().'/dist/images/placeholder800x400-320x180.jpg';
+      $thumb = '<img src="'.$thumb.'">';
     }
   }
 
@@ -128,13 +202,14 @@ function blokmaker($cols, $types) {
         <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>
         <span class="type"><?php echo $types; ?></span>
       </div>
-      <img src="<?php echo $thumb; ?>">
+      <?php echo $thumb; ?>
       <div class="excerpt">
-        <?php the_excerpt(); ?>
+        <?php the_advanced_excerpt(); ?>
       </div>
     </div>
   </div>
   <?php
+  wp_reset_postdata();
 }
 
 add_action( 'after_setup_theme', 'akvo_custom_thumbnail_size' );

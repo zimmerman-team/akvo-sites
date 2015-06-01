@@ -65,13 +65,26 @@ a {
 	width: 100%;
 	top:0;
 	left: 0;
-	z-index: 99;
+	z-index: 9;
+}
+
+.related {
+	h2.head {
+		background: $brand-primary;
+		margin: 0 0 15px 0;
+		padding:10px 15px;
+		color:#fff;
+	}
+	.box-wrap {
+		height: auto;
+	}
 }
 
 .box-wrap {
 	background: $light-grijs;
 	margin-bottom: 15px;
 	position: relative;
+	width: 100%;
 	.header-wrap {
 		height: 60px;
 		padding:10px 15px;
@@ -84,6 +97,12 @@ a {
 			display: table-cell;
   			vertical-align: middle;
 		}
+	}
+	.icon-wrap {
+		text-align: center;
+		margin:10px 15px;
+		background: darken($grijs,15%);
+		padding: 20px 15px;
 	}
 	&.home {
 		width: 100%;
@@ -101,6 +120,15 @@ a {
 			background: $infobar-news;
 		}
 		&.video, &.type-video {
+			background: $infobar-video;
+		}
+		&.map, &.type-map {
+			background: $infobar-video;
+		}
+		&.project, &.type-project {
+			background: $infobar-video;
+		}
+		&.testimonial, &.type-testimonial {
 			background: $infobar-video;
 		}
 		&.page {
@@ -132,9 +160,28 @@ a {
 
 .article {
 	h1 {
-		border-bottom: 1px solid #333;
+		border-bottom: 1px solid darken($grijs, 15%);
 		padding-bottom: 15px;
 	}
+}
+
+.form {
+	.bg {
+		padding:10px 15px;
+	}
+	p {
+		margin-bottom: 0;
+	}
+	.text-wrap, .textarea-wrap {
+		input, textarea {
+			border:1px solid $grijs;
+			background: lighten($light-grijs,20%);
+		}
+	}
+}
+.ninja-forms-required-items {
+	font-size: .8em;
+	margin-bottom: 15px;	
 }
 
 .entry-content {

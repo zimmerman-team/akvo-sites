@@ -12,7 +12,7 @@ function akvo_customize_register( $wp_customize ) {
 	//main
 	$wp_customize->add_setting( 'main_color' , array(
 	    'default'     => '#00a99d',
-	    'transport'   => 'refresh',
+	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -24,7 +24,7 @@ function akvo_customize_register( $wp_customize ) {
 	//bar
 	$wp_customize->add_setting( 'info_bar_blog' , array(
 	    'default'     => '#a3d165',
-	    'transport'   => 'refresh',
+	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -36,7 +36,7 @@ function akvo_customize_register( $wp_customize ) {
 //bar
 	$wp_customize->add_setting( 'info_bar_news' , array(
 	    'default'     => '#f9ba41',
-	    'transport'   => 'refresh',
+	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -48,7 +48,7 @@ function akvo_customize_register( $wp_customize ) {
 //bar
 	$wp_customize->add_setting( 'info_bar_video' , array(
 	    'default'     => '#f47b50',
-	    'transport'   => 'refresh',
+	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -60,7 +60,7 @@ function akvo_customize_register( $wp_customize ) {
 //bar
 	$wp_customize->add_setting( 'info_bar_update' , array(
 	    'default'     => '#54bce8',
-	    'transport'   => 'refresh',
+	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -73,7 +73,7 @@ function akvo_customize_register( $wp_customize ) {
 	//bar
 	$wp_customize->add_setting( 'info_bar_page' , array(
 	    'default'     => '#6d3a7d',
-	    'transport'   => 'refresh',
+	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 

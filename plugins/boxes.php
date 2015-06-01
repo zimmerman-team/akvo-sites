@@ -65,6 +65,30 @@ function yourprefix_before_row_if_2( $field_args, $field ) {
 	}
 }
 
+add_action( 'cmb2_init', 'map_option' );
+function map_option() {
+	$prefix = '_map_option_';
+
+	$cmb_posts = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Google Map', 'cmb2' ),
+		'object_types'  => array( 'post', 'page'), // Post type
+		//'show_on_cb'    => 'yourprefix_show_if_front_page', // function should return a bool value
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // true to keep the metabox closed by default
+	) );
+
+	$cmb_posts->add_field( array(
+		'name' => __( 'Google Map', 'cmb2' ),
+		'desc' => __( 'Enter address or coordinates you would like to display on a map', 'cmb2' ),
+		'id'   => $prefix . 'address',
+		'type' => 'text',
+	) );
+}
+
 add_action( 'cmb2_init', 'post_extra_boxes' );
 function post_extra_boxes() {
 	$prefix = '_post_extra_boxes_';
@@ -138,6 +162,39 @@ function carousel_extra() {
 		'type' => 'text_url',
 	) );
 }
+
+add_action( 'cmb2_init', 'media_lib' );
+function media_lib() {
+	$prefix = '_media_lib_';
+
+	$cmb_media = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Additional fields', 'cmb2' ),
+		'object_types'  => array( 'media'), // Post type
+		//'show_on_cb'    => 'yourprefix_show_if_front_page', // function should return a bool value
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // true to keep the metabox closed by default
+	) );
+
+	$cmb_media->add_field( array(
+		'name' => __( 'File', 'cmb2' ),
+		'desc' => __( 'Upload the file', 'cmb2' ),
+		'id'   => $prefix . 'file',
+		'type' => 'file',
+	) );
+
+	// $cmb_demo->add_field( array(
+	// 	'name'         => __( 'Multiple Files', 'cmb2' ),
+	// 	'desc'         => __( 'Upload or add multiple images/attachments.', 'cmb2' ),
+	// 	'id'           => $prefix . 'file_list',
+	// 	'type'         => 'file_list',
+	// 	'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
+	// ) );
+}
+
 
 add_action( 'cmb2_init', 'custom_boxes' );
 /**

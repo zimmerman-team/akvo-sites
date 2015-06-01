@@ -85,9 +85,11 @@ if ( $type != 'media' || $type != 'video' ) {
 
 <div class="col-md-9">
 	<div class="row" id="searchcontent">
-<?php while (have_posts()) : the_post(); ?>
-  <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
-<?php endwhile; ?>
+<?php while (have_posts()) : the_post(); 
+	if ( get_post_meta( get_the_ID(), '_post_extra_boxes_checkbox', true ) != 'on') {
+  		get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format());
+  	}
+	endwhile; ?>
 	</div>
 </div>
 

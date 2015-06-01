@@ -33,7 +33,7 @@ $infobar-page: #6d3a7d;
 @mixin icons {
 	.type:before, .date:before {
 		font-family: 'FontAwesome';
-		margin-right: 3px;
+		margin-right: 6px;
 	}
 	.blog.type:before, &.blog .type:before, &.type-blog .type:before {
 		content: "\f040";
@@ -46,6 +46,18 @@ $infobar-page: #6d3a7d;
 	}
 	.video.type:before, &.video .type:before {
 		content: "\f03d";
+	}
+	.media.type:before, &.media .type:before {
+		content: "\f019";
+	}
+	.testimonial.type:before, &.testimonial .type:before {
+		content: "\f164";
+	}
+	.project.type:before, &.project .type:before {
+		content: "\f02c";
+	}
+	.map.type:before, &.map .type:before {
+		content: "\f041";
 	}
 	.page.type:before, &.page .type:before {
 		content: "\f016";
