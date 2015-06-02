@@ -26,6 +26,7 @@ $sage_includes = [
   'plugins/related.php',        // Related posts
   'lib/customize-theme.php',        // Theme customizer
   'lib/taxonomies.php',        // Custom categories for eg media library
+  //'lib/color.php',        // PHP color function
 ];
 
 foreach ($sage_includes as $file) {

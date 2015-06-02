@@ -1,5 +1,8 @@
 <?php
 
+include("color.php");
+use Mexitek\PHPColors\Color;
+
 function akvo_customize_register( $wp_customize ) {
 
    //All our sections, settings, and controls will be added here
@@ -12,7 +15,7 @@ function akvo_customize_register( $wp_customize ) {
 	//main
 	$wp_customize->add_setting( 'main_color' , array(
 	    'default'     => '#00a99d',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -24,7 +27,7 @@ function akvo_customize_register( $wp_customize ) {
 	//background
 	$wp_customize->add_setting( 'background' , array(
 	    'default'     => '#ffffff',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -36,7 +39,7 @@ function akvo_customize_register( $wp_customize ) {
 	//grijskleur
 	$wp_customize->add_setting( 'grijs' , array(
 	    'default'     => '#e6e6e6',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -48,7 +51,7 @@ function akvo_customize_register( $wp_customize ) {
 	//bar
 	$wp_customize->add_setting( 'info_bar_blog' , array(
 	    'default'     => '#a3d165',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -60,7 +63,7 @@ function akvo_customize_register( $wp_customize ) {
 //bar
 	$wp_customize->add_setting( 'info_bar_news' , array(
 	    'default'     => '#f9ba41',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -72,7 +75,7 @@ function akvo_customize_register( $wp_customize ) {
 //bar
 	$wp_customize->add_setting( 'info_bar_video' , array(
 	    'default'     => '#f47b50',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -84,7 +87,7 @@ function akvo_customize_register( $wp_customize ) {
 //bar
 	$wp_customize->add_setting( 'info_bar_update' , array(
 	    'default'     => '#54bce8',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -97,7 +100,7 @@ function akvo_customize_register( $wp_customize ) {
 	//bar
 	$wp_customize->add_setting( 'info_bar_page' , array(
 	    'default'     => '#6d3a7d',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -109,7 +112,7 @@ function akvo_customize_register( $wp_customize ) {
 	//bar
 	$wp_customize->add_setting( 'info_bar_project' , array(
 	    'default'     => '#7381fa',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -121,7 +124,7 @@ function akvo_customize_register( $wp_customize ) {
 	//bar
 	$wp_customize->add_setting( 'info_bar_map' , array(
 	    'default'     => '#ad1c3c',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -133,7 +136,7 @@ function akvo_customize_register( $wp_customize ) {
 	//bar
 	$wp_customize->add_setting( 'info_bar_testimonial' , array(
 	    'default'     => '#007ba8',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -145,7 +148,7 @@ function akvo_customize_register( $wp_customize ) {
 	//bar
 	$wp_customize->add_setting( 'info_bar_media' , array(
 	    'default'     => '#9d897b',
-	    'transport'   => 'postMessage',
+	    'transport'   => 'refresh',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
@@ -282,11 +285,23 @@ function pn_get_attachment_id_from_url( $attachment_url = '' ) {
 
 function mytheme_customize_css()
 {
+	
+	$main = get_theme_mod('main_color');
+	$main = new Color("$main"); 
+	$licht = $main->mix('ffffff', 10);
+	$donker = $main->darken();
+
     ?>
          <style type="text/css">
             body { font-family: '<?php echo get_theme_mod('akvo_font'); ?>'; background: <?php echo get_theme_mod('background'); ?>;}
             h1,h2,h3,h4,h5,h6 { font-family: '<?php echo get_theme_mod('akvo_font_head'); ?>';  }
             nav { font-family: '<?php echo get_theme_mod('akvo_font_nav'); ?>'; }
+            .carousel .text, footer .twitter, nav ul.navbar-nav li.current-menu-item a { background: #<?php echo $licht;?>; }
+            nav .lang .fa-circle, nav ul.navbar-nav li i { color: #<?php echo $licht;?>; }
+            .btn-default, .filters #uwpqsf_id #uwpqsf_btn input, .carousel .carousel-indicators li.active, footer .custom { background: #<?php echo $main->getHex();?>; }
+            nav ul.navbar-nav li .fa-circle, a { color: #<?php echo $main->getHex();?>; }
+            .btn-default:focus, .btn-default:hover, .filters #uwpqsf_id #uwpqsf_btn input:focus, .filters #uwpqsf_id #uwpqsf_btn input:hover, footer .fixed, .comment-form footer .custom input[type=submit], .filters #uwpqsf_id #uwpqsf_btn footer .custom input, footer .custom .btn, footer .custom .comment-form input[type=submit], footer .custom .filters #uwpqsf_id #uwpqsf_btn input { background: #<?php echo $donker;?>; }
+         	.box-wrap .infobar.blog, .box-wrap .infobar.type-blog { background: <?php echo get_theme_mod('info_bar_blog');?>; }
          </style>
     <?php
 }
