@@ -21,6 +21,30 @@ function akvo_customize_register( $wp_customize ) {
 		'section'    => 'akvo_color',
 		'settings'   => 'main_color',
 	) ) );
+	//background
+	$wp_customize->add_setting( 'background' , array(
+	    'default'     => '#ffffff',
+	    'transport'   => 'postMessage',
+	    'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'background', array(
+		'label'        => __( 'Background', 'sage' ),
+		'section'    => 'akvo_color',
+		'settings'   => 'background',
+	) ) );
+	//grijskleur
+	$wp_customize->add_setting( 'grijs' , array(
+	    'default'     => '#e6e6e6',
+	    'transport'   => 'postMessage',
+	    'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grijs', array(
+		'label'        => __( 'Blocks and similar items', 'sage' ),
+		'section'    => 'akvo_color',
+		'settings'   => 'grijs',
+	) ) );
 	//bar
 	$wp_customize->add_setting( 'info_bar_blog' , array(
 	    'default'     => '#a3d165',
@@ -260,7 +284,7 @@ function mytheme_customize_css()
 {
     ?>
          <style type="text/css">
-            body { font-family: '<?php echo get_theme_mod('akvo_font'); ?>'; }
+            body { font-family: '<?php echo get_theme_mod('akvo_font'); ?>'; background: <?php echo get_theme_mod('background'); ?>;}
             h1,h2,h3,h4,h5,h6 { font-family: '<?php echo get_theme_mod('akvo_font_head'); ?>';  }
             nav { font-family: '<?php echo get_theme_mod('akvo_font_nav'); ?>'; }
          </style>
@@ -273,6 +297,9 @@ function create_scss() {
 	$file = WP_CONTENT_DIR."/themes/akvo-sites/assets/styles/common/_overrides.scss";
 	$main_color = get_theme_mod('main_color');
 	if (empty( $main_color )) $main_color = '#00a99d';
+
+	$grijs = get_theme_mod('grijs');
+	if (empty( $grijs )) $grijs = '#e6e6e6';
 
 	$info_bar_blog = get_theme_mod('info_bar_blog');
 	if (empty( $info_bar_blog )) $info_bar_blog = '#a3d165';
@@ -302,6 +329,8 @@ function create_scss() {
 	if (empty( $info_bar_testimonial )) $info_bar_testimonial = '#007ba8';
 
 	$current = "\$brand-primary: $main_color;\n"
+	."\$grijs: $grijs;\n"
+	."\$infobar-map: $info_bar_map;\n"
 	."\$infobar-blog: $info_bar_blog;\n"
 	."\$infobar-news: $info_bar_news;\n"
 	."\$infobar-video: $info_bar_video;\n"

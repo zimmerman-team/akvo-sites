@@ -66,8 +66,8 @@ class post_widget extends WP_Widget {
       'posts_per_page' => 1,
       'post__not_in' => $do_not_duplicate
     );
-    if ($columns == 1) {
-      $amount = 3;
+    if ($columns == 4) {
+      $amount = 12;
     }
     elseif ($columns == 2) {
       $amount = 6;
@@ -76,7 +76,7 @@ class post_widget extends WP_Widget {
       $amount = 9;
     }
     else {
-      $amount = 12;
+      $amount = 3;
     }
     $query = new WP_Query( $qargs );
     if ( $query->have_posts() ) { 

@@ -16,13 +16,11 @@ $white: #ffffff;
 $bg: #ffffff;
 $grijs: #e6e6e6;
 
-$light-grijs: lighten($grijs, 5%);
-
 $brand-primary: #00a99d;
 
+$light-grijs: lighten($grijs, 5%);
 $primary-dark: darken($brand-primary, 18%);
 $primary-light: mix($brand-primary, $white, 40%);
-
 $footertxt: transparentize($grijs, .4);
 
 $infobar-blog: #a3d165;

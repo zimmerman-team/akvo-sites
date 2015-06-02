@@ -35,6 +35,9 @@ nav {
 		overflow: hidden;
 	}
 	ul.navbar-nav {
+		.menu-item-home a {
+			padding-left: 42px;
+		}
 		li {
 			background: $grijs;
 			border-bottom: 1px solid $white;
@@ -46,15 +49,19 @@ nav {
 				color: $white;
 			}
 			a {
-				color:#333;
-				padding: 10px 15px;
+				height: 40px;
+				padding:0 15px;
+				line-height: 40px;
 			}
 			i {
 				margin-left:5px;
 				color: $primary-light;
 			}
 			.fa-stack {
-				margin:-5px 5px -5px -5px;
+				margin-right: 5px;
+				position: absolute;
+				left:10px;
+				top:6px;
 			}
 			.fa-circle {
 				color: $brand-primary;
@@ -84,7 +91,6 @@ nav {
 					}
 				}
 				a {
-					padding:10px 15px;
 					background: $grijs;
 					color:#333;
 				}
@@ -106,11 +112,14 @@ nav {
 			padding:0;
 		}
 		ul.navbar-nav {
+			height:40px;
 			.menu-item-home, .menu-item-home a {
 				border-top-left-radius: $border-radius-base;
 				border-bottom-left-radius: $border-radius-base;
 			}
 			li {
+				height: 40px;
+				line-height: 40px;
 				float: left;
 				border-right: 1px solid $white;
 				border-bottom: 0;
@@ -120,6 +129,9 @@ nav {
 				}
 				&:hover i {
 					color: $white;
+				}
+				a {
+
 				}
 			}
 			.dropdown:hover {
