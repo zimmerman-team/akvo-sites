@@ -120,7 +120,7 @@ function video_extra_boxes() {
 	$cmb_vid = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
 		'title'         => __( 'Additional fields', 'cmb2' ),
-		'object_types'  => array( 'video'), // Post type
+		'object_types'  => array( 'video', 'testimonial'), // Post type
 		//'show_on_cb'    => 'yourprefix_show_if_front_page', // function should return a bool value
 		'context'       => 'normal',
 		'priority'      => 'high',

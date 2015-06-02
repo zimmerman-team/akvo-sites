@@ -11,7 +11,7 @@ $query_carousel = new WP_Query( $args_carousel );
 
 if ( $query_carousel->have_posts() ) { ?>
 	<div class="col-md-12">
-		<div id="main-carousel" class="carousel slide" data-ride="carousel">
+		<div id="main-carousel" class="carousel slide fp" data-ride="carousel">
 			<div class="row">
 				<div class="carousel-inner" role="listbox">
 

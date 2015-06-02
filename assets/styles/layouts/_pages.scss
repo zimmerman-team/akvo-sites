@@ -42,6 +42,28 @@ a {
 			margin-right: 2px;
 		}
 	}
+	&.featured {
+		.text {
+			border-top-right-radius: $border-radius-base;
+			border-top-left-radius: $border-radius-base;
+		}
+		.pic {
+			border-bottom-right-radius: $border-radius-base;
+			border-bottom-left-radius: $border-radius-base;
+			overflow: hidden;
+		}
+	}
+	&.fp {
+		.pic {
+			border-top-right-radius: $border-radius-base;
+			border-top-left-radius: $border-radius-base;
+			overflow: hidden;
+		}
+		.text {
+			border-bottom-right-radius: $border-radius-base;
+			border-bottom-left-radius: $border-radius-base;
+		}
+	}
 }
 .clickable {
 	&:hover {
@@ -69,6 +91,7 @@ a {
 }
 
 .related {
+	text-align: center;
 	h2.head {
 		background: $brand-primary;
 		margin: 0 0 15px 0;
@@ -81,6 +104,7 @@ a {
 }
 
 .box-wrap {
+	border-radius: $border-radius-base;
 	background: $light-grijs;
 	margin-bottom: 15px;
 	position: relative;
@@ -251,6 +275,30 @@ a {
 		}
 	}
 	.carousel {
+		&.featured {
+			.text {
+				border-radius: 0;
+				border-bottom-left-radius: $border-radius-base;
+				border-top-left-radius: $border-radius-base;
+			}
+			.pic {
+				border-radius: 0;
+				border-bottom-right-radius: $border-radius-base;
+				border-top-right-radius: $border-radius-base;
+			}
+		}
+		&.fp {
+			.pic {
+				border-radius: 0;
+				border-bottom-left-radius: $border-radius-base;
+				border-top-left-radius: $border-radius-base;
+			}
+			.text {
+				border-radius: 0;
+				border-bottom-right-radius: $border-radius-base;
+				border-top-right-radius: $border-radius-base;
+			}
+		}
 		.item {
 			height: 280px;
 			div {

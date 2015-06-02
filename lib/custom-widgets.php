@@ -81,6 +81,7 @@ class post_widget extends WP_Widget {
     $query = new WP_Query( $qargs );
     if ( $query->have_posts() ) { 
       while ( $query->have_posts() ) {
+
         $query->the_post();
 
         blokmaker($amount, $type2);

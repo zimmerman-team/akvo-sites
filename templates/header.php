@@ -35,6 +35,7 @@
             <i class="fa fa-search fa-2x"></i>
           </button>
 
+          <?php if ( !is_plugin_active( 'google-website-translator/google-website-translator.php' ) ) { ?>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="">
             <span class="lang">
               <span class="fa-stack">
@@ -43,6 +44,7 @@
               </span>
             </span>
           </button>
+          <?php } ?>
 
           <a class="navbar-brand visible-xs" href="#"><img src="<?= get_template_directory_uri(); ?>/dist/images/logo-sample.svg"></a>
         </div>
@@ -57,6 +59,11 @@
           if (has_nav_menu('primary_navigation')) :
             wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav']);
           endif;
+          
+          if ( is_plugin_active( 'google-website-translator/google-website-translator.php' ) && !is_user_logged_in() ) { ?>
+            <div style="display:none;"><?php echo do_shortcode('[prisna-google-website-translator]'); ?></div>
+          <?php } 
+          else {
           ?>
 
           <span class="lang hidden-xs">
@@ -65,7 +72,7 @@
               <i class="fa-stack-1x fa-inverse">NL</i>
             </span>
           </span>
-
+          <?php } ?>
 
         </nav>
       </div>

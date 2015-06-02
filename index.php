@@ -28,7 +28,7 @@ if ( $type != 'media' || $type != 'video' ) {
 ?>
 
 <div class="col-md-12">
-	<div class="row carousel eq clickable">
+	<div class="row carousel eq clickable featured">
 		<a href="<?php the_permalink(); ?>" class="boxlink"></a>
 		<div class="col-sm-6 eq">
 			<div class="text">

@@ -84,7 +84,7 @@ function akvo_customize_register( $wp_customize ) {
 	) ) );
 	//bar
 	$wp_customize->add_setting( 'info_bar_project' , array(
-	    'default'     => '#6d3a7d',
+	    'default'     => '#7381fa',
 	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
@@ -96,7 +96,7 @@ function akvo_customize_register( $wp_customize ) {
 	) ) );
 	//bar
 	$wp_customize->add_setting( 'info_bar_map' , array(
-	    'default'     => '#6d3a7d',
+	    'default'     => '#ad1c3c',
 	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
@@ -108,7 +108,7 @@ function akvo_customize_register( $wp_customize ) {
 	) ) );
 	//bar
 	$wp_customize->add_setting( 'info_bar_testimonial' , array(
-	    'default'     => '#6d3a7d',
+	    'default'     => '#007ba8',
 	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
@@ -120,7 +120,7 @@ function akvo_customize_register( $wp_customize ) {
 	) ) );
 	//bar
 	$wp_customize->add_setting( 'info_bar_media' , array(
-	    'default'     => '#6d3a7d',
+	    'default'     => '#9d897b',
 	    'transport'   => 'postMessage',
 	    'sanitize_callback' => 'sanitize_hex_color',
 	) );
@@ -226,16 +226,16 @@ function create_scss() {
 	if (empty( $info_bar_page )) $info_bar_page = '#6d3a7d';
 
 	$info_bar_media = get_theme_mod('info_bar_media');
-	if (empty( $info_bar_media )) $info_bar_media = '#6d3a7d';
+	if (empty( $info_bar_media )) $info_bar_media = '#9d897b';
 
 	$info_bar_project = get_theme_mod('info_bar_project');
-	if (empty( $info_bar_project )) $info_bar_project = '#6d3a7d';
+	if (empty( $info_bar_project )) $info_bar_project = '#7381fa';
 
 	$info_bar_map = get_theme_mod('info_bar_map');
-	if (empty( $info_bar_map )) $info_bar_map = '#6d3a7d';
+	if (empty( $info_bar_map )) $info_bar_map = '#ad1c3c';
 
 	$info_bar_testimonial = get_theme_mod('info_bar_testimonial');
-	if (empty( $info_bar_testimonial )) $info_bar_testimonial = '#6d3a7d';
+	if (empty( $info_bar_testimonial )) $info_bar_testimonial = '#007ba8';
 
 	$font = get_theme_mod('akvo_font');
 	if (empty( $font )) $font = '\'Open Sans\'';

@@ -1,6 +1,7 @@
 .search-wrap {
 	background: $light-grijs;
 	position: relative;
+	border-radius: $border-radius-base;
 	input {
 		border: 0;
 		&.search-field.form-control {

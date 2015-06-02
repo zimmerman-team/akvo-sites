@@ -209,7 +209,6 @@ function blokmaker($cols, $types) {
     </div>
   </div>
   <?php
-  wp_reset_postdata();
 }
 
 add_action( 'after_setup_theme', 'akvo_custom_thumbnail_size' );

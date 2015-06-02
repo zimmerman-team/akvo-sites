@@ -6,7 +6,7 @@
     <div class="bg">
       <div class="main-image">
         <?php 
-        if ($type == 'video') {
+        if (in_array($type, array('video','testimonial'), true )) {
           $url = convertYoutube(get_post_meta( get_the_ID(), '_video_extra_boxes_url', true ));
           ?>
           <div class='embed-container'>
@@ -14,9 +14,10 @@
           </div>
           <?php
         }
+        elseif ($type == 'map') {
 
-        else the_post_thumbnail( 'large' ); 
-        
+        }
+        else the_post_thumbnail( 'large' );       
         ?>
       </div>
       <div class="row">

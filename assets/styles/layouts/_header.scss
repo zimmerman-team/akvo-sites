@@ -11,6 +11,7 @@
 	padding: 10px 15px;
 	margin-top: 15px;
 	font-size: .9em;
+	border-radius: $border-radius-base;
 }
 
 .navbar-toggle {
@@ -29,6 +30,10 @@
 }
 
 nav {
+	#menu-main-nav {
+		border-radius: $border-radius-base;
+		overflow: hidden;
+	}
 	ul.navbar-nav {
 		li {
 			background: $grijs;
@@ -90,12 +95,21 @@ nav {
 
 @media (min-width: $screen-sm-min) {
 	nav {
+		#menu-main-nav {
+			border-radius: 0;
+			overflow: visible;
+		}
+		border-radius: $border-radius-base;
 		background: $light-grijs;
 		position: relative;
 		&.navbar-collapse {
 			padding:0;
 		}
 		ul.navbar-nav {
+			.menu-item-home, .menu-item-home a {
+				border-top-left-radius: $border-radius-base;
+				border-bottom-left-radius: $border-radius-base;
+			}
 			li {
 				float: left;
 				border-right: 1px solid $white;
