@@ -245,11 +245,11 @@ function create_scss() {
 	."\$infobar-news: $info_bar_news;\n"
 	."\$infobar-video: $info_bar_video;\n"
 	."\$infobar-update: $info_bar_update;\n"
-	."\$infobar-page: $info_bar_page;\n";
-	."\$infobar-media: $info_bar_media;\n";
-	."\$infobar-project: $info_bar_project;\n";
-	."\$infobar-map: $info_bar_map;\n";
-	."\$infobar-testimonial: $info_bar_testimonial;\n";
+	."\$infobar-page: $info_bar_page;\n"
+	."\$infobar-media: $info_bar_media;\n"
+	."\$infobar-project: $info_bar_project;\n"
+	."\$infobar-map: $info_bar_map;\n"
+	."\$infobar-testimonial: $info_bar_testimonial;\n"
 	."\$font-family-base: $font;\n";
 	// Write the contents back to the file
 	file_put_contents($file, $current);
