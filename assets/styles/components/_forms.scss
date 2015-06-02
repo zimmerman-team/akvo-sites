@@ -24,3 +24,23 @@
 		}
 	}
 }
+
+.form {
+	.bg {
+		padding:10px 15px;
+	}
+	p {
+		margin-bottom: 0;
+	}
+	.text-wrap, .textarea-wrap {
+		input, textarea {
+			border:1px solid $grijs;
+			background: lighten($light-grijs,20%);
+			padding:8px 10px;
+		}
+	}
+}
+.ninja-forms-required-items {
+	font-size: .8em;
+	margin-bottom: 15px;	
+}

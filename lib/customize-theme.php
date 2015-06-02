@@ -152,18 +152,71 @@ function akvo_customize_register( $wp_customize ) {
 	    'priority'    => 30,
 	    'description' => 'Select site typography',
 	) );
+	$wp_customize->add_setting( 'akvo_font_head', array(
+	     'default' => 'Open Sans',
+	     'transport'   => 'refresh',
+	));
+	$wp_customize->add_control( 'akvo_font_head', array(
+			'type' 		=> 'select',
+		    'label'    => __( 'Header font', 'sage' ),
+		    'section'  => 'akvo_font_section',
+		    'settings' => 'akvo_font_head',
+		    'choices' => array(
+	            'Open Sans' => 'Open Sans',
+	            'Roboto' => 'Roboto',
+	            'Lora' => 'Lora',
+	            'Raleway' => 'Raleway',
+	            'Merriweather' => 'Merriweather',
+	            'Arvo' => 'Arvo',
+	            'Muli' => 'Muli',
+	            'Alegreya' => 'Alegreya',
+	            'Exo 2' => 'Exo 2',
+	            'Crimson Text' => 'Crimson Text',
+	            'Lobster Two' => 'Lobster Two',
+	)));
+	$wp_customize->add_setting( 'akvo_font_nav', array(
+	     'default' => 'Open Sans',
+	     'transport'   => 'refresh',
+	));
+	$wp_customize->add_control( 'akvo_font_nav', array(
+			'type' 		=> 'select',
+		    'label'    => __( 'Navigation font', 'sage' ),
+		    'section'  => 'akvo_font_section',
+		    'settings' => 'akvo_font_nav',
+		    'choices' => array(
+	            'Open Sans' => 'Open Sans',
+	            'Roboto' => 'Roboto',
+	            'Lora' => 'Lora',
+	            'Raleway' => 'Raleway',
+	            'Merriweather' => 'Merriweather',
+	            'Arvo' => 'Arvo',
+	            'Muli' => 'Muli',
+	            'Alegreya' => 'Alegreya',
+	            'Exo 2' => 'Exo 2',
+	            'Crimson Text' => 'Crimson Text',
+	            'Lobster Two' => 'Lobster Two',
+	)));
 	$wp_customize->add_setting( 'akvo_font', array(
 	     'default' => 'Open Sans',
-	     'transport'   => 'postMessage',
+	     'transport'   => 'refresh',
 	));
 	$wp_customize->add_control( 'akvo_font', array(
 			'type' 		=> 'select',
-		    'label'    => __( 'Font', 'sage' ),
+		    'label'    => __( 'Body font', 'sage' ),
 		    'section'  => 'akvo_font_section',
 		    'settings' => 'akvo_font',
 		    'choices' => array(
 	            'Open Sans' => 'Open Sans',
-	            'Bla Sans' => 'Bla Sans',
+	            'Roboto' => 'Roboto',
+	            'Lora' => 'Lora',
+	            'Raleway' => 'Raleway',
+	            'Merriweather' => 'Merriweather',
+	            'Arvo' => 'Arvo',
+	            'Muli' => 'Muli',
+	            'Alegreya' => 'Alegreya',
+	            'Exo 2' => 'Exo 2',
+	            'Crimson Text' => 'Crimson Text',
+	            'Lobster Two' => 'Lobster Two',
 	)));
 
 	$wp_customize->remove_section( 'nav');
@@ -203,6 +256,17 @@ function pn_get_attachment_id_from_url( $attachment_url = '' ) {
 	return $attachment_id;
 }
 
+function mytheme_customize_css()
+{
+    ?>
+         <style type="text/css">
+            body { font-family: '<?php echo get_theme_mod('akvo_font'); ?>'; }
+            h1,h2,h3,h4,h5,h6 { font-family: '<?php echo get_theme_mod('akvo_font_head'); ?>';  }
+            nav { font-family: '<?php echo get_theme_mod('akvo_font_nav'); ?>'; }
+         </style>
+    <?php
+}
+add_action( 'wp_head', 'mytheme_customize_css');
 
 function create_scss() {
 	//global $wpdb;
@@ -237,9 +301,6 @@ function create_scss() {
 	$info_bar_testimonial = get_theme_mod('info_bar_testimonial');
 	if (empty( $info_bar_testimonial )) $info_bar_testimonial = '#007ba8';
 
-	$font = get_theme_mod('akvo_font');
-	if (empty( $font )) $font = '\'Open Sans\'';
-
 	$current = "\$brand-primary: $main_color;\n"
 	."\$infobar-blog: $info_bar_blog;\n"
 	."\$infobar-news: $info_bar_news;\n"
@@ -249,8 +310,7 @@ function create_scss() {
 	."\$infobar-media: $info_bar_media;\n"
 	."\$infobar-project: $info_bar_project;\n"
 	."\$infobar-map: $info_bar_map;\n"
-	."\$infobar-testimonial: $info_bar_testimonial;\n"
-	."\$font-family-base: $font;\n";
+	."\$infobar-testimonial: $info_bar_testimonial;\n";
 	// Write the contents back to the file
 	file_put_contents($file, $current);
 	return false;

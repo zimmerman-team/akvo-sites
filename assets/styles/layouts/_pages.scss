@@ -91,12 +91,12 @@ a {
 }
 
 .related {
-	text-align: center;
 	h2.head {
 		background: $brand-primary;
 		margin: 0 0 15px 0;
 		padding:10px 15px;
 		color:#fff;
+		text-align: center;
 	}
 	.box-wrap {
 		height: auto;
@@ -158,10 +158,10 @@ a {
 		&.page {
 			background: $infobar-page;
 		}
-		&.update {
+		&.update, &.type-update {
 			background: $infobar-update;
 		}
-		&.media {
+		&.media, &.type-media {
 			margin-top:0;
 			background: $infobar-media;
 		}
@@ -187,25 +187,6 @@ a {
 		border-bottom: 1px solid darken($grijs, 15%);
 		padding-bottom: 15px;
 	}
-}
-
-.form {
-	.bg {
-		padding:10px 15px;
-	}
-	p {
-		margin-bottom: 0;
-	}
-	.text-wrap, .textarea-wrap {
-		input, textarea {
-			border:1px solid $grijs;
-			background: lighten($light-grijs,20%);
-		}
-	}
-}
-.ninja-forms-required-items {
-	font-size: .8em;
-	margin-bottom: 15px;	
 }
 
 .entry-content {

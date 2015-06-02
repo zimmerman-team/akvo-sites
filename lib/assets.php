@@ -69,6 +69,22 @@ function assets() {
   wp_enqueue_style( 'fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', false, null);
   wp_enqueue_style('sage_css', asset_path('styles/main.css'), false, null);
 
+  $font_face[] = get_theme_mod('akvo_font');
+  $font_face[] = get_theme_mod('akvo_font_head');
+    $font_face[] = get_theme_mod('akvo_font_nav');
+
+  if (in_array('Roboto', $font_face )) wp_enqueue_style( 'roboto', '//fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic', false, null);
+  if (in_array('Lora', $font_face )) wp_enqueue_style( 'lora', '//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic', false, null);
+  if (in_array('Raleway', $font_face )) wp_enqueue_style( 'raleway', '//fonts.googleapis.com/css?family=Raleway:400,700', false, null);
+  if (in_array('Merriweather', $font_face )) wp_enqueue_style( 'Merriweather', '//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic', false, null);
+  if (in_array('Arvo', $font_face )) wp_enqueue_style( 'Arvo', '//fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic', false, null);
+  if (in_array('Muli', $font_face )) wp_enqueue_style( 'Muli', '//fonts.googleapis.com/css?family=Muli:400,400italic', false, null);
+  if (in_array('Nunito', $font_face )) wp_enqueue_style( 'Nunito', '//fonts.googleapis.com/css?family=Nunito:400,700', false, null);
+  if (in_array('Alegreya', $font_face )) wp_enqueue_style( 'Alegreya', '//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700', false, null);
+  if (in_array('Exo 2', $font_face )) wp_enqueue_style( 'Exo2', '//fonts.googleapis.com/css?family=Exo+2:400,400italic,700,700italic', false, null);
+  if (in_array('Crimson Text', $font_face )) wp_enqueue_style( 'Crimson', '//fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic', false, null);
+  if (in_array('Lobster Two', $font_face )) wp_enqueue_style( 'Lobster', '//fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic', false, null);
+
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }

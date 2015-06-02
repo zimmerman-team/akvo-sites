@@ -190,6 +190,8 @@ function blokmaker($cols, $types) {
       $thumb = '<img src="'.$thumb.'">';
     }
   }
+  $type = $types;
+  if ($types == 'post') $type = 'news';
 
   ?>
   <div class="col-md-<?php echo $cols; ?> eq">
@@ -200,7 +202,7 @@ function blokmaker($cols, $types) {
       </div>
       <div <?php post_class('infobar'); ?>>
         <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>
-        <span class="type"><?php echo $types; ?></span>
+        <span class="type"><?php echo $type; ?></span>
       </div>
       <?php echo $thumb; ?>
       <div class="excerpt">

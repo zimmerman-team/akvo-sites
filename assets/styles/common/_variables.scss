@@ -46,22 +46,22 @@ $infobar-testimonial: #007ba8;
 	.post.type:before, &.post .type:before, &.type-post .type:before {
 		content: "\f1ea";
 	}
-	.update.type:before, &.update .type:before {
+	.update.type:before, &.update .type:before, &.type-update .type:before  {
 		content: "\f005";
 	}
-	.video.type:before, &.video .type:before {
+	.video.type:before, &.video .type:before, &.type-video .type:before  {
 		content: "\f03d";
 	}
-	.media.type:before, &.media .type:before {
+	.media.type:before, &.media .type:before, &.type-media .type:before {
 		content: "\f019";
 	}
-	.testimonial.type:before, &.testimonial .type:before {
+	.testimonial.type:before, &.testimonial .type:before, &.type-testimonial .type:before  {
 		content: "\f164";
 	}
-	.project.type:before, &.project .type:before {
+	.project.type:before, &.project .type:before, &.type-project .type:before  {
 		content: "\f02c";
 	}
-	.map.type:before, &.map .type:before {
+	.map.type:before, &.map .type:before, &.type-map .type:before  {
 		content: "\f041";
 	}
 	.page.type:before, &.page .type:before {

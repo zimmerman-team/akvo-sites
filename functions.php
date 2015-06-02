@@ -25,6 +25,7 @@ $sage_includes = [
   'plugins/boxes.php',        // Custom input fields
   'plugins/related.php',        // Related posts
   'lib/customize-theme.php',        // Theme customizer
+  'lib/taxonomies.php',        // Custom categories for eg media library
 ];
 
 foreach ($sage_includes as $file) {

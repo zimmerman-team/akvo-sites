@@ -23,4 +23,37 @@ function customize_output($results , $arg, $id, $getdata ){
 		$results = ob_get_clean();		
 			return $results;
 }
+
+add_filter('uwpqsftaxo_field', 'add_multiselect_admin');
+function add_multiselect_admin($fields){
+
+	$fields['multiselect'] = 'Multi Select';
+	return $fields;
+}
+
+#2. Add the field to the frontend
+add_filter('uwpqsf_addtax_field_multiselect','multiselect_front','',11);
+function multiselect_front($type,$exc,$hide,$taxname,$taxlabel,$taxall,$opt,$c,$defaultclass,$formid,$divclass){
+	$eid = explode(",", $exc);
+	$args = array('hide_empty'=>$hide,'exclude'=>$eid );
+	$taxoargs = apply_filters('uwpqsf_taxonomy_arg',$args,$taxname,$formid);
+    $terms = get_terms($taxname,$taxoargs);
+	$count = count($terms);
+	$html  = '<div class="'.$defaultclass.' '.$divclass.'" id="tax-select-'.$c.'"><span class="taxolabel-'.$c.'">'.$taxlabel.'</span>';
+	$html .= '<input  type="hidden" name="taxo['.$c.'][name]" value="'.$taxname.'">';
+	$html .= '<input  type="hidden" name="taxo['.$c.'][opt]" value="'.$opt.'">';
+	$html .=  '<select multiple id="tdp-'.$c.'" class="tdp-class-'.$c.'" name="taxo['.$c.'][term]">';
+		if(!empty($taxall)){
+			$html .= '<option selected value="uwpqsftaxoall">'.$taxall.'</option>';
+		}
+			if ( $count > 0 ){
+					foreach ( $terms as $term ) {
+					$selected = (isset($_GET['taxo'][$c]['term']) && $_GET['taxo'][$c]['term'] == $term->slug) ? 'selected="selected"' : '';
+					$html .= '<option value="'.$term->slug.'" '.$selected.'>'.$term->name.'</option>';}
+		}
+	$html .= '</select>';
+	$html .= '</div>';
+	return $html;
+}
+
 ?>
