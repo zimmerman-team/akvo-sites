@@ -25,9 +25,22 @@ else {
         </div>
 
         <div class="row">
+            <?php if ($test == false) { ?>
+            <div class="col-lg-6 col-lg-offset-3">
+            <?php } else { ?>
             <div class="col-lg-8 col-lg-offset-2">
+            <?php } ?>
             	<?php use Roots\Sage\Titles; ?>
         		<h1><?= Titles\title(); ?></h1>
+            </div>
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="meta single"></div>
+            </div>
+            <?php if ($test == false) { ?>
+            <div class="col-lg-6 col-lg-offset-3">
+            <?php } else { ?>
+            <div class="col-lg-8 col-lg-offset-2">
+            <?php } ?>
                 <div class="entry-content">
                  	<?php the_content(); ?>
                 </div>

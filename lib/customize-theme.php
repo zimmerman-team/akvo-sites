@@ -44,7 +44,7 @@ function akvo_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grijs', array(
-		'label'        => __( 'Blocks and similar items', 'sage' ),
+		'label'        => __( 'Shades of grey', 'sage' ),
 		'section'    => 'akvo_color',
 		'settings'   => 'grijs',
 	) ) );
@@ -287,21 +287,51 @@ function mytheme_customize_css()
 {
 	
 	$main = get_theme_mod('main_color');
-	$main = new Color("$main"); 
-	$licht = $main->mix('ffffff', 10);
-	$donker = $main->darken();
+	$main2 = new Color("$main"); 
+	$licht = '#'.$main2->mix('ffffff', 10);
+	$donker = '#'.$main2->darken();
+	$grijs = get_theme_mod('grijs');
+	$grijs2 = new Color("$grijs");
+	$lichtgrijs = '#'.$grijs2->lighten(5);
+	$donkergrijs = '#'.$grijs2->darken(10);
+	if($grijs == "#ffffff") $hovergrijs = "#e6e6e6";
+	else $hovergrijs = $grijs;
 
     ?>
          <style type="text/css">
+         	html {background:<?php echo $donker;?>; }
             body { font-family: '<?php echo get_theme_mod('akvo_font'); ?>'; background: <?php echo get_theme_mod('background'); ?>;}
             h1,h2,h3,h4,h5,h6 { font-family: '<?php echo get_theme_mod('akvo_font_head'); ?>';  }
             nav { font-family: '<?php echo get_theme_mod('akvo_font_nav'); ?>'; }
-            .carousel .text, footer .twitter, nav ul.navbar-nav li.current-menu-item a { background: #<?php echo $licht;?>; }
-            nav .lang .fa-circle, nav ul.navbar-nav li i { color: #<?php echo $licht;?>; }
-            .btn-default, .filters #uwpqsf_id #uwpqsf_btn input, .carousel .carousel-indicators li.active, footer .custom { background: #<?php echo $main->getHex();?>; }
-            nav ul.navbar-nav li .fa-circle, a { color: #<?php echo $main->getHex();?>; }
-            .btn-default:focus, .btn-default:hover, .filters #uwpqsf_id #uwpqsf_btn input:focus, .filters #uwpqsf_id #uwpqsf_btn input:hover, footer .fixed, .comment-form footer .custom input[type=submit], .filters #uwpqsf_id #uwpqsf_btn footer .custom input, footer .custom .btn, footer .custom .comment-form input[type=submit], footer .custom .filters #uwpqsf_id #uwpqsf_btn input { background: #<?php echo $donker;?>; }
+            .carousel .text, footer .twitter, nav ul.navbar-nav li.current-menu-item a { background: <?php echo $licht;?>; }
+            nav .lang .fa-circle, nav ul.navbar-nav li i { color: <?php echo $licht;?>; }
+            .btn-default, .filters #uwpqsf_id #uwpqsf_btn input, .carousel .carousel-indicators li.active, footer .custom { background: <?php echo $main;?>; }
+            nav ul.navbar-nav li .fa-circle, a { color: <?php echo $main;?>; }
+            a:hover {color:<?php echo $donker;?>;}
+            .btn-default:focus, .btn-default:hover, .filters #uwpqsf_id #uwpqsf_btn input:focus, .filters #uwpqsf_id #uwpqsf_btn input:hover, footer .fixed, .comment-form footer .custom input[type=submit], .filters #uwpqsf_id #uwpqsf_btn footer .custom input, footer .custom .btn, footer .custom .comment-form input[type=submit], footer .custom .filters #uwpqsf_id #uwpqsf_btn input { background: <?php echo $donker;?>; }
+         	.box-wrap, .article .bg, article .bg, .filters, .breadcrumbs, .search-wrap { background: <?php echo $lichtgrijs;?>;}
          	.box-wrap .infobar.blog, .box-wrap .infobar.type-blog { background: <?php echo get_theme_mod('info_bar_blog');?>; }
+         	.box-wrap .infobar.news, .box-wrap .infobar.type-news { background: <?php echo get_theme_mod('info_bar_news');?>; }
+         	.box-wrap .infobar.video, .box-wrap .infobar.type-video { background: <?php echo get_theme_mod('info_bar_video');?>; }
+         	.box-wrap .infobar.update, .box-wrap .infobar.type-update { background: <?php echo get_theme_mod('info_bar_update');?>; }
+         	.box-wrap .infobar.page, .box-wrap .infobar.type-page { background: <?php echo get_theme_mod('info_bar_page');?>; }
+         	.box-wrap .infobar.media, .box-wrap .infobar.type-media { background: <?php echo get_theme_mod('info_bar_media');?>; }
+         	.box-wrap .infobar.map, .box-wrap .infobar.type-map { background: <?php echo get_theme_mod('info_bar_map');?>; }
+         	.box-wrap .infobar.project, .box-wrap .infobar.type-project { background: <?php echo get_theme_mod('info_bar_project');?>; }
+         	.box-wrap .infobar.testimonial, .box-wrap .infobar.type-testimonial { background: <?php echo get_theme_mod('info_bar_testimonial');?>; }
+         	nav ul.navbar-nav li {background: <?php echo $grijs;?>;}
+         	nav ul.navbar-nav .dropdown-menu li a {background: <?php echo $grijs;?>; }
+         	.clickable:hover .text {background: <?php echo $main;?>;}
+         	.box-wrap:hover {background: <?php echo $hovergrijs;?>;}
+         	.search-wrap .input-group-btn .btn {color:<?php echo $donkergrijs;?>;}
+         	nav ul.navbar-nav .dropdown-menu li { background: <?php echo $licht;?>;}
+         	.nav>li>a:focus, .nav>li>a:hover {background:<?php echo $licht;?>; }
+         	blockquote {border-color: $donkergrijs;}
+         	@media (min-width: 768px) {
+         		nav  {background: <?php echo $lichtgrijs;?>;}
+         		nav ul.navbar-nav li a:hover, nav ul.navbar-nav li:hover a { background: <?php echo $licht;?>;}
+         		nav ul.navbar-nav .dropdown-menu li a:hover {background: <?php echo $main;?>; }
+         	}
          </style>
     <?php
 }

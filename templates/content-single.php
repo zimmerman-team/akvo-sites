@@ -25,17 +25,61 @@
           <header>
             <h1 class="entry-title"><?php the_title(); ?></h1>
           </header>
+        </div>
+        <div class="col-lg-12">
           <div class="meta">
-            <?php get_template_part('templates/entry-meta'); ?>
+            <div class="row">
+              <div class="col-lg-10 col-lg-offset-1">
+                <?php get_template_part('templates/entry-meta'); ?>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="col-lg-10 col-lg-offset-1">
           <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
               <div class="entry-content">
                 <?php the_content();
                 if ($type == 'media') {
-                  $dld = get_post_meta( get_the_ID(), '_media_lib_file', true );
-                  ?>
-                  <a href="<?php echo $dld; ?>">Download here</a>
+                  $id = get_the_ID();
+                  $author = get_post_meta( $id, '_media_lib_author', true );
+                  $dld = get_post_meta( $id, '_media_lib_file', true );
+                  $location = get_the_terms( $id, 'countries' );
+                  $language = get_the_terms( $id, 'languages' );
+                  $category = get_the_terms( $id, 'category' );
+                  $type_tax = get_the_terms( $id, 'types' );
+                  if (!empty($author)) { ?>
+                  <p><b>Author</b>: <?php echo $author;?></p>
+                  <?php } 
+                  if (!empty($location)) { ?>
+                  <p><b>Location</b>: <?php 
+                  foreach($location as $loc) {
+                    echo $loc->name;
+                  }
+                  ?></p>
+                  <?php }
+                  if (!empty($language)) { ?>
+                  <p><b>Language</b>: <?php 
+                  foreach($language as $lang) {
+                    echo $lang->name;
+                  }
+                  ?></p>
+                  <?php }
+                  if (!empty($category)) { ?>
+                  <p><b>Category</b>: <?php 
+                  foreach($category as $cat) {
+                    echo $cat->name;
+                  }
+                  ?></p>
+                  <?php }
+                  if (!empty($type_tax)) { ?>
+                  <p><b>Type</b>: <?php 
+                  foreach($type_tax as $type) {
+                    echo $type->name;
+                  }
+                  ?></p>
+                  <?php } ?>
+                  <p><a href="<?php echo $dld; ?>" class="btn btn-default">Download</a></p>
                   <?php
                 }
                   ?>
@@ -49,7 +93,7 @@
     <!-- <footer>
       <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
     </footer> -->
-    <?php if ($type == 'post' || $type == 'post') { ?>
+    <?php if ($type == 'post' || $type == 'blog') { ?>
     <div class="bg">
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1">

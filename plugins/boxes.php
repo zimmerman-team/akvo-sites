@@ -171,12 +171,17 @@ function media_lib() {
 		'id'            => $prefix . 'metabox',
 		'title'         => __( 'Additional fields', 'cmb2' ),
 		'object_types'  => array( 'media'), // Post type
-		//'show_on_cb'    => 'yourprefix_show_if_front_page', // function should return a bool value
 		'context'       => 'normal',
 		'priority'      => 'high',
 		'show_names'    => true, // Show field names on the left
-		// 'cmb_styles' => false, // false to disable the CMB stylesheet
-		// 'closed'     => true, // true to keep the metabox closed by default
+	) );
+
+	$cmb_media->add_field( array(
+		'name' => __( 'Author', 'cmb2' ),
+		'desc' => __( 'Author name', 'cmb2' ),
+		'id'   => $prefix . 'author',
+		'type' => 'text',
+		// 'repeatable' => true,
 	) );
 
 	$cmb_media->add_field( array(
@@ -185,14 +190,6 @@ function media_lib() {
 		'id'   => $prefix . 'file',
 		'type' => 'file',
 	) );
-
-	// $cmb_demo->add_field( array(
-	// 	'name'         => __( 'Multiple Files', 'cmb2' ),
-	// 	'desc'         => __( 'Upload or add multiple images/attachments.', 'cmb2' ),
-	// 	'id'           => $prefix . 'file_list',
-	// 	'type'         => 'file_list',
-	// 	'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
-	// ) );
 }
 
 

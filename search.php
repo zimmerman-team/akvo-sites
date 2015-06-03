@@ -16,6 +16,8 @@
 
 </div>
 
-<?php the_posts_navigation(); ?>
+</div>
 
+<div class="col-md-12 text-center">
+<?php wp_pagenavi(); ?>
 </div>

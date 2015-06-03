@@ -77,9 +77,7 @@ function create_post_type() {
       'supports' => array(
         'title',
         'editor',
-        'author', 
         'thumbnail', 
-        'excerpt', 
       ),
     )
   );
@@ -193,9 +191,14 @@ function blokmaker($cols, $types) {
   $type = $types;
   if ($types == 'post') $type = 'news';
 
+  if ($cols == 12) $size = 'megagroot';
+  elseif ($cols == 6) $size = 'middel';
+  elseif ($cols == 9) $size = 'groot';
+  else $size = 'klein';
+
   ?>
   <div class="col-md-<?php echo $cols; ?> eq">
-    <div class="box-wrap <?php if(is_front_page()) echo 'home'; ?>">
+    <div class="box-wrap <?php echo $size; ?> <?php if(is_front_page()) echo 'home'; ?>">
       <a href="<?php the_permalink(); ?>" class="boxlink"></a>
       <div class="header-wrap">
         <h2><?php the_title(); ?></h2>
