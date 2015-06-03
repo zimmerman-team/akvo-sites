@@ -285,17 +285,20 @@ function pn_get_attachment_id_from_url( $attachment_url = '' ) {
 
 function mytheme_customize_css()
 {
-	
 	$main = get_theme_mod('main_color');
-	$main2 = new Color("$main"); 
-	$licht = '#'.$main2->mix('ffffff', 10);
-	$donker = '#'.$main2->darken();
+	if (!empty($main)) {
+		$main2 = new Color("$main"); 
+		$licht = '#'.$main2->mix('ffffff', 10);
+		$donker = '#'.$main2->darken();
+	}
 	$grijs = get_theme_mod('grijs');
-	$grijs2 = new Color("$grijs");
-	$lichtgrijs = '#'.$grijs2->lighten(5);
-	$donkergrijs = '#'.$grijs2->darken(10);
-	if($grijs == "#ffffff") $hovergrijs = "#e6e6e6";
-	else $hovergrijs = $grijs;
+	if (!empty($grijs)) {
+		$grijs2 = new Color("$grijs");
+		$lichtgrijs = '#'.$grijs2->lighten(5);
+		$donkergrijs = '#'.$grijs2->darken(10);
+		if($grijs == "#ffffff") $hovergrijs = "#e6e6e6";
+		else $hovergrijs = $grijs;
+	}
 
     ?>
          <style type="text/css">
