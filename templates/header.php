@@ -59,7 +59,7 @@
           if (has_nav_menu('primary_navigation')) :
             wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav']);
           endif;
-          
+          if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
           if ( is_plugin_active( 'google-website-translator/google-website-translator.php' ) && !is_user_logged_in() ) { ?>
             <div style="display:none;"><?php echo do_shortcode('[prisna-google-website-translator]'); ?></div>
           <?php } 

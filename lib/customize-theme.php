@@ -300,6 +300,8 @@ function mytheme_customize_css()
 		else $hovergrijs = $grijs;
 	}
 
+	if (!empty($grijs) && !empty($main)) {
+
     ?>
          <style type="text/css">
          	html {background:<?php echo $donker;?>; }
@@ -337,6 +339,7 @@ function mytheme_customize_css()
          	}
          </style>
     <?php
+	}
 }
 add_action( 'wp_head', 'mytheme_customize_css');
 

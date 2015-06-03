@@ -27,6 +27,8 @@ if (!defined('DIST_DIR')) {
   define('DIST_DIR', '/dist/');
 }
 
+if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+
 /**
  * Define which pages shouldn't have the sidebar
  */
