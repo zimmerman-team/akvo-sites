@@ -41,6 +41,10 @@ article, .article {
 	float: right;
 }
 
+.avatar {
+	display: none;
+}
+
 @media (min-width: $screen-md-min) {
 	article, .article {
 		.meta {

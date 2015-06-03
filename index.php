@@ -66,19 +66,20 @@ if ( $type != 'media' || $type != 'video' ) {
 <div class="col-md-3">
 	<div class="filters">
 		<h4>Filter</h4>
+		<p>Werkt nog niet in multisite</p>
 		<?php 
-		if ( is_post_type_archive('blog') ) {
-			echo do_shortcode( '[ULWPQSF id=48 formtitle=0]' );
-		}
-		elseif ( is_post_type_archive('media') ) {
-			echo do_shortcode( '[ULWPQSF id=53 formtitle=0]' );
-		}
-		elseif ( is_post_type_archive('video') ) {
-			//echo do_shortcode( '[ULWPQSF id=53 formtitle=0]' );
-		}
-		else {
-			echo do_shortcode( '[ULWPQSF id=49 formtitle=0]' );
-		}
+		// if ( is_post_type_archive('blog') ) {
+		// 	echo do_shortcode( '[ULWPQSF id=48 formtitle=0]' );
+		// }
+		// elseif ( is_post_type_archive('media') ) {
+		// 	echo do_shortcode( '[ULWPQSF id=53 formtitle=0]' );
+		// }
+		// elseif ( is_post_type_archive('video') ) {
+		// 	//echo do_shortcode( '[ULWPQSF id=53 formtitle=0]' );
+		// }
+		// else {
+		// 	echo do_shortcode( '[ULWPQSF id=18 formtitle=0]' );
+		// }
 ?>
 	</div>
 </div>
