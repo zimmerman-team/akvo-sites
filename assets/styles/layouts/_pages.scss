@@ -124,18 +124,27 @@ a {
 		}
 	}
 	&.middel {
-		h2 {
-			font-size: 1.8em;
+		.header-wrap {
+			height: 65px;
+			h2 {
+				font-size: 1.8em;
+			}
 		}
 	}
 	&.groot {
-		h2 {
-			font-size: 2em;
+		height: 70px;
+		.header-wrap {
+			h2 {
+				font-size: 2em;
+			}
 		}
 	}
 	&.megagroot {
-		h2 {
-			font-size: 2.2em;
+		height: 75px;
+		.header-wrap {
+			h2 {
+				font-size: 2.2em;
+			}
 		}
 	}
 	.icon-wrap {
