@@ -175,9 +175,9 @@ nav {
 		// 	}
 		// }
 		.lang_sel_click {
-			position:absolute;
-			right: 5px;
-			top:7px;
+			position:absolute !important;
+			right: 5px !important;
+			top:7px !important;
 			.iclflag {
 				margin-right:5px;
 				top:0 !important;
