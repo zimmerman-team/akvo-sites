@@ -61,30 +61,44 @@ if ( $type != 'media' || $type != 'video' ) {
 <?php endif; ?>
 
 
-<?php } ?>
+<?php } 
 
-<div class="col-md-3">
-	<div class="filters">
-		<h4>Filter</h4>
-		<?php 
-		if ( is_post_type_archive('blog') ) {
-		 	echo do_shortcode( '[ULWPQSF id=48 formtitle=0]' );
-		}
-		elseif ( is_post_type_archive('media') ) {
-		 	echo do_shortcode( '[ULWPQSF id=53 formtitle=0]' );
-		}
-		elseif ( is_post_type_archive('video') ) {
-			echo do_shortcode( '[ULWPQSF id=53 formtitle=0]' );
-		}
-		else {
-		 	echo do_shortcode( '[ULWPQSF id=49 formtitle=0]' );
-		}
-?>
+$blog_id = get_theme_mod('filter_blog');
+$news_id = get_theme_mod('filter_news');
+$media_id = get_theme_mod('filter_media');
+if ( is_post_type_archive('blog') && !empty($blog_id) ) { ?>
+	<div class="col-md-3">
+		<div class="filters">
+			<h4>Filter</h4>
+			<?php echo do_shortcode( "[ULWPQSF id=$blog_id formtitle=0]" ); ?>
+		</div>
 	</div>
-</div>
-
+<?php }
+elseif ( is_post_type_archive('media') && !empty($media_id) ) { ?>
+ 	<div class="col-md-3">
+		<div class="filters">
+			<h4>Filter</h4>
+			<?php echo do_shortcode( "[ULWPQSF id=$media_id formtitle=0]" ); ?>
+		</div>
+	</div>
+<?php }
+elseif ( is_home() && !empty($news_id) ) { ?>
+	<div class="col-md-3">
+		<div class="filters">
+			<h4>Filter</h4>
+			<?php echo do_shortcode( "[ULWPQSF id=$news_id formtitle=0]" ); ?>
+		</div>
+	</div>
+<?php }
+/*
+if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty($media_id)) || (is_post_type_archive('blog') && !empty($blog_id) )) {
+?>
 <div class="col-md-9">
-	<div class="row" id="searchcontent">
+<?php } else { ?>
+<div class="col-md-12">
+} */
+?>
+<div class="row" id="searchcontent">
 <?php while (have_posts()) : the_post(); 
 	if ( get_post_meta( get_the_ID(), '_post_extra_boxes_checkbox', true ) != 'on') {
   		get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format());
