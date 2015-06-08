@@ -38,9 +38,14 @@ footer {
 		font-size: 18px;
 		margin-top:10px;
 	}
+	section {
+		padding:10px 0;
+		&.widget_synved_social_follow {
+			padding-top:0;
+		}
+	}
 	.twitter {
 		background: $primary-light;
-		padding:10px 0;
 		color:#333;
 		//twitter
 		ul.fetched_tweets {
@@ -82,14 +87,7 @@ footer {
 		}
 	}
 	.custom {
-		section {
-			padding-bottom:10px 0;
-		}
-		.widget {
-			margin-bottom: 15px;
-		}
 		background: $brand-primary;
-		padding:10px 0;
 		// .socialmedia {
 		// 	i {
 		// 		font-size: 2em;
