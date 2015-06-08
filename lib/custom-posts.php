@@ -122,6 +122,26 @@ function create_post_type() {
     )
   );
 
+  register_post_type( 'flow',
+    array(
+      'labels' => array(
+        'name' => __( 'AKVO Flow' ),
+        'singular_name' => __( 'Flow item' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'menu_position' => 20,
+      'menu_icon' => 'dashicons-welcome-widgets-menus',
+      'supports' => array(
+        'title',
+        'editor',
+        'author', 
+        'thumbnail', 
+        'excerpt', 
+      ),
+    )
+  );
+
   register_post_type( 'map',
     array(
       'labels' => array(

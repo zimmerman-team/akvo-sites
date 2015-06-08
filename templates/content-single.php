@@ -81,12 +81,22 @@
                   <?php } ?>
                   <p><a href="<?php echo $dld; ?>" class="btn btn-default">Download</a></p>
                   <?php
-                }
-                  ?>
+                } ?>
+                
               </div>
             </div>
           </div>
         </div>
+        <?php if ($type == 'flow') {
+          $url = get_post_meta( get_the_ID(), '_flow_url_url', true );
+          ?>
+          <div class="col-md-12">
+            <div class="iframe-wrap">
+              <iframe src="<?php echo $url; ?>" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <?php
+        } ?>
       </div>
     </div>
 

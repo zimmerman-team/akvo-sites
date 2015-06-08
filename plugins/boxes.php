@@ -139,6 +139,27 @@ function video_extra_boxes() {
 	) );
 }
 
+add_action( 'cmb2_init', 'flow_url' );
+function flow_url() {
+	$prefix = '_flow_url_';
+
+	$cmb_vid = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Additional fields', 'cmb2' ),
+		'object_types'  => array( 'flow'), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+	) );
+
+	$cmb_vid->add_field( array(
+		'name' => __( 'AKVO Flow URL', 'cmb2' ),
+		'desc' => __( 'Enter the URL you wish to embed', 'cmb2' ),
+		'id'   => $prefix . 'url',
+		'type' => 'text_url',
+	) );
+}
+
 add_action( 'cmb2_init', 'carousel_extra' );
 function carousel_extra() {
 	$prefix = '_carousel_extra_boxes_';

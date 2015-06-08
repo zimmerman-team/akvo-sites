@@ -47,6 +47,9 @@ $infobar-testimonial: #007ba8;
 	.update.type:before, &.update .type:before, &.type-update .type:before  {
 		content: "\f005";
 	}
+	.flow.type:before, &.flow .type:before, &.type-flow .type:before  {
+		content: "\f1fe";
+	}
 	.video.type:before, &.video .type:before, &.type-video .type:before  {
 		content: "\f03d";
 	}
