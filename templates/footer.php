@@ -2,7 +2,7 @@
 	<div class="twitter">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-offset-md-3">
+				<div class="col-md-6 col-md-offset-3">
 					<?php dynamic_sidebar('sidebar-footer-high'); ?>
 				</div>
 			</div>
@@ -11,7 +11,7 @@
 	<div class="custom">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-offset-md-3">
+				<div class="col-md-6 col-md-offset-3">
 					<?php dynamic_sidebar('sidebar-footer'); ?>
 				</div>
 			</div>
