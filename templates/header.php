@@ -35,18 +35,20 @@
             <i class="fa fa-search fa-2x"></i>
           </button>
 
-          <?php if ( !is_plugin_active( 'google-website-translator/google-website-translator.php' ) ) { ?>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="">
-            <span class="lang">
-              <span class="fa-stack">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa-stack-1x fa-inverse">NL</i>
-              </span>
-            </span>
+          <?php 
+          if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+          if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) { ?>
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".lang-collapse">
+                Language
           </button>
           <?php } ?>
 
           <a class="navbar-brand visible-xs" href="#"><img src="<?= get_template_directory_uri(); ?>/dist/images/logo-sample.svg"></a>
+        </div>
+
+        <div class="collapse lang-collapse">
+          <?php do_action('icl_language_selector');  ?>
         </div>
 
         <div class="collapse search-collapse">
@@ -59,20 +61,12 @@
           if (has_nav_menu('primary_navigation')) :
             wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new wp_bootstrap_navwalker(), 'menu_class' => 'nav navbar-nav']);
           endif;
-          if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
           if ( is_plugin_active( 'google-website-translator/google-website-translator.php' ) && !is_user_logged_in() ) { ?>
             <div style="display:none;"><?php echo do_shortcode('[prisna-google-website-translator]'); ?></div>
           <?php } 
-          else {
-          ?>
-
-          <span class="lang hidden-xs">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa-stack-1x fa-inverse">NL</i>
-            </span>
-          </span>
-          <?php } ?>
+          elseif (is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' )) {
+            do_action('icl_language_selector'); 
+          } ?>
 
         </nav>
       </div>
