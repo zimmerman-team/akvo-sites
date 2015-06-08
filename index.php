@@ -90,20 +90,21 @@ elseif ( is_home() && !empty($news_id) ) { ?>
 		</div>
 	</div>
 <?php }
-/*
-if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty($media_id)) || (is_post_type_archive('blog') && !empty($blog_id) )) {
-?>
+if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty($media_id)) || (is_post_type_archive('blog') && !empty($blog_id))) { 
+	$filter = true;
+	?>
 <div class="col-md-9">
-<?php } else { ?>
+<?php } else { 
+	$filter = false; ?>
 <div class="col-md-12">
-} */
-?>
-<div class="row" id="searchcontent">
-<?php while (have_posts()) : the_post(); 
-	if ( get_post_meta( get_the_ID(), '_post_extra_boxes_checkbox', true ) != 'on') {
-  		get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format());
-  	}
-	endwhile; ?>
+<?php } ?>
+	<div class="row" id="searchcontent">
+	<?php while (have_posts()) : the_post(); 
+		if ( get_post_meta( get_the_ID(), '_post_extra_boxes_checkbox', true ) != 'on') {
+			set_query_var( 'filter', $filter );
+	  		get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format());
+	  	}
+		endwhile; ?>
 	</div>
 </div>
 
