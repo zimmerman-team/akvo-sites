@@ -68,10 +68,11 @@ function asset_path($filename) {
 function assets() {
   wp_enqueue_style( 'fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', false, null);
   wp_enqueue_style('sage_css', asset_path('styles/main.css'), false, null);
+  wp_enqueue_style( 'opensans', '//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic', false, null);
 
   $font_face[] = get_theme_mod('akvo_font');
   $font_face[] = get_theme_mod('akvo_font_head');
-    $font_face[] = get_theme_mod('akvo_font_nav');
+  $font_face[] = get_theme_mod('akvo_font_nav');
 
   if (in_array('Roboto', $font_face )) wp_enqueue_style( 'roboto', '//fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic', false, null);
   if (in_array('Lora', $font_face )) wp_enqueue_style( 'lora', '//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic', false, null);
