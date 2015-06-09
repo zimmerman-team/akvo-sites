@@ -174,8 +174,8 @@ nav {
 		// 		font-style: normal;
 		// 	}
 		// }
-		.lang_sel_click {
-			position:absolute !important;
+		#lang_sel_click {
+			position:absolute;
 			right: 5px !important;
 			top:7px !important;
 			.iclflag {
@@ -186,12 +186,11 @@ nav {
 	}
 }
 
-.lang-collapse {
+.visible-xs {
 	.lang_sel_click {
-		width: 100%;
-		li {
-			width: 100% !important;
-		}
+		position:relative;
+		float: right;
+		margin-top: 15px;
 		.iclflag {
 			margin-right:5px;
 			top:0 !important;

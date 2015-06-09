@@ -38,17 +38,12 @@
           <?php 
           if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
           if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) { ?>
-
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".lang-collapse">
-                Language
-          </button>
+          <div class="visible-xs">
+          <?php do_action('icl_language_selector');  ?>
+          </div>
           <?php } ?>
 
           <a class="navbar-brand visible-xs" href="#"><img src="<?= get_template_directory_uri(); ?>/dist/images/logo-sample.svg"></a>
-        </div>
-
-        <div class="collapse lang-collapse">
-          <?php do_action('icl_language_selector');  ?>
         </div>
 
         <div class="collapse search-collapse">
