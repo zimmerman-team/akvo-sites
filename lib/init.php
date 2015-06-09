@@ -82,3 +82,5 @@ function widgets_init() {
   ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
+
+if (is_plugin_active('breadcrumb-navxt')) define('BCN_SETTINGS_FAVOR_LOCAL', true);
