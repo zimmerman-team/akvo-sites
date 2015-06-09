@@ -102,6 +102,12 @@ a {
 	.box-wrap {
 		height: auto;
 	}
+	.header-wrap {
+		height: 60px !important;
+		h2 {
+			font-size: 1.4em !important;
+		}
+	}
 }
 
 .box-wrap {
@@ -132,16 +138,16 @@ a {
 		}
 	}
 	&.groot {
-		height: 70px;
 		.header-wrap {
+			height: 70px;
 			h2 {
 				font-size: 2em;
 			}
 		}
 	}
 	&.megagroot {
-		height: 75px;
 		.header-wrap {
+			height: 75px;
 			h2 {
 				font-size: 2.2em;
 			}
