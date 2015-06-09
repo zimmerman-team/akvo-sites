@@ -113,7 +113,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			// if ( ! empty( $item->attr_title ) )
 			// 	$item_output .= '<a'. $attributes .' class="' . esc_attr( $item->attr_title ) .' "><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>';
 			if ( $item->attr_title == 'home' )
-				$item_output .= '<a'. $attributes .'><span class="fa-stack">
+				$item_output .= '<a'. $attributes .' class="' . esc_attr( $item->attr_title ) .' "><span class="fa-stack">
 								<span class="fa fa-circle fa-stack-2x"></span>
 								<span class="fa fa-home fa-stack-1x fa-inverse"></span>
 								</span>';
