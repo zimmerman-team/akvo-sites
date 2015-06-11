@@ -229,16 +229,6 @@ a {
 	padding:15px 10px;
 }
 
-.dual {
-	 -webkit-column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-count: 2; /* Firefox */
-    column-count: 2;
-
-    -webkit-column-gap: 50px; /* Chrome, Safari, Opera */
-    -moz-column-gap: 50px; /* Firefox */
-    column-gap: 50px;
-}
-
 .comments {
 	footer {
 		text-align: left;
@@ -289,6 +279,17 @@ a {
 	$font-size: 14px;
 	$line-height: 1.63;
 	$lines-to-show: 5;
+
+	
+	.dual {
+		 -webkit-column-count: 2; /* Chrome, Safari, Opera */
+	    -moz-column-count: 2; /* Firefox */
+	    column-count: 2;
+
+	    -webkit-column-gap: 50px; /* Chrome, Safari, Opera */
+	    -moz-column-gap: 50px; /* Firefox */
+	    column-gap: 50px;
+	}
 
 	.box-wrap {
 		transition:all .2s;

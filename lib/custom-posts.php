@@ -179,6 +179,22 @@ function convertYoutube($string) {
     );
 }
 
+function truncate($string, $length, $stopanywhere=false) {
+    //truncates a string to a certain char length, stopping on a word if not specified otherwise.
+    if (strlen($string) > $length) {
+        //limit hit!
+        $string = substr($string,0,($length -3));
+        if ($stopanywhere) {
+            //stop anywhere
+            $string .= '...';
+        } else{
+            //stop on a word.
+            $string = substr($string,0,strrpos($string,' ')).'...';
+        }
+    }
+    return $string;
+}
+
 function blokmaker($cols, $types) {
 
   if ($types == 'video') {
@@ -215,13 +231,14 @@ function blokmaker($cols, $types) {
   elseif ($cols == 6) $size = 'middel';
   elseif ($cols == 9) $size = 'groot';
   else $size = 'klein';
-
+  $title = get_the_title();
+  $title = truncate($title,10);
   ?>
   <div class="col-md-<?php echo $cols; ?> eq">
     <div class="box-wrap <?php echo $size; ?> <?php if(is_front_page()) echo 'home'; ?>">
       <a href="<?php the_permalink(); ?>" class="boxlink"></a>
       <div class="header-wrap">
-        <h2><?php the_title(); ?></h2>
+        <h2><?php echo $title; ?></h2>
       </div>
       <div <?php post_class('infobar'); ?>>
         <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>

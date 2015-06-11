@@ -56,4 +56,15 @@ function multiselect_front($type,$exc,$hide,$taxname,$taxlabel,$taxall,$opt,$c,$
 	return $html;
 }
 
+add_action('uwpqsf_form_bottom', 'form_reset', '', 1);
+function form_reset($formid) {
+	$html = '<button style="float:left;" type="button" class="btn btn-default" value="Reset" onclick="reset()">Reset</button>';
+	$html .= '<script>';
+	$html .= 'function reset() { document.getElementById("'.$formid.'").reset(); }';
+	$html .= '</script>';
+
+	echo $html;
+
+}
+
 ?>

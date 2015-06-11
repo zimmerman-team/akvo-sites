@@ -146,15 +146,15 @@ function flow_url() {
 	$cmb_vid = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
 		'title'         => __( 'Additional fields', 'cmb2' ),
-		'object_types'  => array( 'flow'), // Post type
+		'object_types'  => array( 'flow','map'), // Post type
 		'context'       => 'normal',
 		'priority'      => 'high',
 		'show_names'    => true, // Show field names on the left
 	) );
 
 	$cmb_vid->add_field( array(
-		'name' => __( 'AKVO Flow URL', 'cmb2' ),
-		'desc' => __( 'Enter the URL you wish to embed', 'cmb2' ),
+		'name' => __( 'Iframe URL', 'cmb2' ),
+		'desc' => __( 'Enter the URL you wish to embed as an iframe below the content', 'cmb2' ),
 		'id'   => $prefix . 'url',
 		'type' => 'text_url',
 	) );

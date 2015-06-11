@@ -32,7 +32,7 @@
 	p {
 		margin-bottom: 0;
 	}
-	.text-wrap, .textarea-wrap {
+	.text-wrap, .textarea-wrap, .spam-wrap {
 		input, textarea {
 			border:1px solid $grijs;
 			background: lighten($light-grijs,20%);

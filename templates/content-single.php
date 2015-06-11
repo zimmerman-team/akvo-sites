@@ -1,4 +1,10 @@
+<?php
+$attached = get_post_meta( get_the_ID(), 'attached_cmb2_attached_posts', true );
+if(!empty($attached)) { ?>
 <div class="col-md-9">
+<?php } else { ?>
+<div class="col-md-12">
+<?php } ?>
   <?php while (have_posts()) : the_post(); 
   $type = get_post_type();
   ?>
@@ -87,7 +93,7 @@
             </div>
           </div>
         </div>
-        <?php if ($type == 'flow') {
+        <?php if ($type == 'flow' || $type == 'map') {
           $url = get_post_meta( get_the_ID(), '_flow_url_url', true );
           ?>
           <div class="col-md-12">
@@ -117,12 +123,11 @@
 </div>
 <?php endwhile; ?>
 
+<?php
+if(!empty($attached)) {
+?>
 <div class="col-md-3">
   <div class="related">
-    <?php
-    $attached = get_post_meta( get_the_ID(), 'attached_cmb2_attached_posts', true );
-    if(!empty($attached)) {
-    ?>
     <h2 class="head">Related posts</h2>
     <div class="row">
     <?php 
@@ -138,7 +143,7 @@
       endwhile;
       wp_reset_postdata();
     endif;
-    } ?>
+    ?>
   </div>
 </div>
-
+<?php } ?>
