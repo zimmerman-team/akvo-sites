@@ -3,7 +3,7 @@ add_filter('uwpqsf_result_tempt', 'customize_output', '', 4);
 function customize_output($results , $arg, $id, $getdata ){
 	 // The Query
             $apiclass = new uwpqsfprocess();
-             $query = new WP_Query( $arg );
+            $query = new WP_Query( $arg );
 		ob_start();	$result = '';
 			// The Loop
 

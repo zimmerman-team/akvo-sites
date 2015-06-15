@@ -22,6 +22,11 @@ if ( $type != 'media' || $type != 'video' ) {
 		'meta_value' => 'on'
 	);
 
+	// $arg2 = array(
+	// 	'post_type' => $type,
+	// 	'posts_per_page' => 9,
+	// );
+
 	$query = new WP_Query( $args );
 	if ( $query->have_posts() ) :
 		while ( $query->have_posts() ) : $query->the_post();
@@ -63,6 +68,40 @@ if ( $type != 'media' || $type != 'video' ) {
 
 <?php } 
 
+if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty($media_id)) || (is_post_type_archive('blog') && !empty($blog_id))) { 
+	$filter = true;
+	?>
+<div class="col-md-9">
+<?php } else { 
+	$filter = false; ?>
+<div class="col-md-12">
+<?php } ?>
+	<div class="row" id="searchcontent">
+	<?php 
+
+	
+	// $list_query = new WP_Query( $arg2 );
+
+	// 	if ( $list_query->have_posts() ) {
+	// 		while ( $list_query->have_posts() ) : $list_query->the_post();
+	// 			if ( get_post_meta( get_the_ID(), '_post_extra_boxes_checkbox', true ) != 'on') {
+	// 				set_query_var( 'filter', $filter );
+	//   				get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format());
+	// 			}
+	// 		endwhile;
+	// 	}
+
+	while (have_posts()) : the_post(); 
+		if ( get_post_meta( get_the_ID(), '_post_extra_boxes_checkbox', true ) != 'on') {
+			set_query_var( 'filter', $filter );
+	  		get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format());
+	  	}
+		endwhile; 
+	?>
+	</div>
+</div>
+
+<?php
 $blog_id = get_theme_mod('filter_blog');
 $news_id = get_theme_mod('filter_news');
 $media_id = get_theme_mod('filter_media');
@@ -89,24 +128,7 @@ elseif ( is_home() && !empty($news_id) ) { ?>
 			<?php echo do_shortcode( "[ULWPQSF id=$news_id formtitle=0]" ); ?>
 		</div>
 	</div>
-<?php }
-if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty($media_id)) || (is_post_type_archive('blog') && !empty($blog_id))) { 
-	$filter = true;
-	?>
-<div class="col-md-9">
-<?php } else { 
-	$filter = false; ?>
-<div class="col-md-12">
 <?php } ?>
-	<div class="row" id="searchcontent">
-	<?php while (have_posts()) : the_post(); 
-		if ( get_post_meta( get_the_ID(), '_post_extra_boxes_checkbox', true ) != 'on') {
-			set_query_var( 'filter', $filter );
-	  		get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format());
-	  	}
-		endwhile; ?>
-	</div>
-</div>
 
 <div class="col-md-12 text-center">
 <?php wp_pagenavi(); ?>
