@@ -146,7 +146,7 @@ function flow_url() {
 	$cmb_vid = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
 		'title'         => __( 'Additional fields', 'cmb2' ),
-		'object_types'  => array( 'flow','map'), // Post type
+		'object_types'  => array( 'flow','map','post','page'), // Post type
 		'context'       => 'normal',
 		'priority'      => 'high',
 		'show_names'    => true, // Show field names on the left
@@ -157,6 +157,39 @@ function flow_url() {
 		'desc' => __( 'Enter the URL you wish to embed as an iframe below the content', 'cmb2' ),
 		'id'   => $prefix . 'url',
 		'type' => 'text_url',
+	) );
+}
+
+add_action( 'cmb2_init', 'channels' );
+function channels() {
+	$prefix = '_channels_';
+
+	$cmb_vid = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Youtube and Flickr channels', 'cmb2' ),
+		'object_types'  => array('post','page','blog'), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+	) );
+
+	$cmb_vid->add_field( array(
+		'name' => __( 'Youtube channel shortcode', 'cmb2' ),
+		'desc' => __( 'Enter the shortcode as specced by the Youtube Channel plugin. Eg. [Youtube_Channel_Gallery user="Washalliance" videowidth="580" ratio="16x9" theme="light" color="white" autoplay="0" rel="0" showinfo="0" maxitems="16" thumb_width="125" thumb_ratio="16x9" thumb_columns_ld="4" promotion="0" pagination_show="0"]', 'cmb2' ),
+		'id'   => $prefix . 'youtube',
+		'type' => 'text',
+	) );
+	$cmb_vid->add_field( array(
+		'name' => __( 'Flickr username', 'cmb2' ),
+		'desc' => __( 'Enter the username containing the gallery you wish to show.', 'cmb2' ),
+		'id'   => $prefix . 'flickr_handle',
+		'type' => 'text',
+	) );
+	$cmb_vid->add_field( array(
+		'name' => __( 'Flickr gallery ID', 'cmb2' ),
+		'desc' => __( 'Enter the ID of the gallery you wish to show.', 'cmb2' ),
+		'id'   => $prefix . 'flickr',
+		'type' => 'text',
 	) );
 }
 

@@ -42,7 +42,7 @@ function multiselect_front($type,$exc,$hide,$taxname,$taxlabel,$taxall,$opt,$c,$
 	$html  = '<div class="'.$defaultclass.' '.$divclass.'" id="tax-select-'.$c.'"><span class="taxolabel-'.$c.'">'.$taxlabel.'</span>';
 	$html .= '<input  type="hidden" name="taxo['.$c.'][name]" value="'.$taxname.'">';
 	$html .= '<input  type="hidden" name="taxo['.$c.'][opt]" value="'.$opt.'">';
-	$html .=  '<select multiple id="tdp-'.$c.'" class="multi tdp-class-'.$c.'" name="taxo['.$c.'][term]">';
+	$html .= '<select multiple id="tdp-'.$c.'" class="multi tdp-class-'.$c.'" name="taxo['.$c.'][term]">';
 		if(!empty($taxall)){
 			$html .= '<option selected value="uwpqsftaxoall">'.$taxall.'</option>';
 		}
@@ -58,11 +58,7 @@ function multiselect_front($type,$exc,$hide,$taxname,$taxlabel,$taxall,$opt,$c,$
 
 add_action('uwpqsf_form_bottom', 'form_reset', '', 1);
 function form_reset($formid) {
-	$html = '<button style="float:left;" type="button" class="btn btn-default" value="Reset" onclick="reset()">Reset</button>';
-	$html .= '<script>';
-	$html .= 'function reset() { document.getElementById("'.$formid.'").reset(); }';
-	$html .= '</script>';
-
+	$html = '<button type="button" id="resetbtn" class="reset btn btn-default" value="clear">Clear</button>';
 	echo $html;
 
 }

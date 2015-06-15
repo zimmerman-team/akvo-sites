@@ -146,6 +146,18 @@ function akvo_customize_register( $wp_customize ) {
 		'settings'   => 'info_bar_testimonial',
 	) ) );
 	//bar
+	$wp_customize->add_setting( 'info_bar_flow' , array(
+	    'default'     => '#54bce8',
+	    'transport'   => 'refresh',
+	    'sanitize_callback' => 'sanitize_hex_color',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'info_bar_flow', array(
+		'label'        => __( 'Flow Color', 'sage' ),
+		'section'    => 'akvo_color',
+		'settings'   => 'info_bar_flow',
+	) ) );
+	//bar
 	$wp_customize->add_setting( 'info_bar_media' , array(
 	    'default'     => '#9d897b',
 	    'transport'   => 'refresh',
@@ -348,6 +360,9 @@ function mytheme_customize_css()
 	$info_bar_update = get_theme_mod('info_bar_update');
 	if (empty( $info_bar_update )) $info_bar_update = '#54bce8';
 
+	$info_bar_flow = get_theme_mod('info_bar_flow');
+	if (empty( $info_bar_flow )) $info_bar_flow = '#54bce8';
+
 	$info_bar_page = get_theme_mod('info_bar_page');
 	if (empty( $info_bar_page )) $info_bar_page = '#6d3a7d';
 
@@ -385,6 +400,7 @@ function mytheme_customize_css()
          	.box-wrap .infobar.map, .box-wrap .infobar.type-map { background: <?php echo $info_bar_map;?>; }
          	.box-wrap .infobar.project, .box-wrap .infobar.type-project { background: <?php echo $info_bar_project;?>; }
          	.box-wrap .infobar.testimonial, .box-wrap .infobar.type-testimonial { background: <?php echo $info_bar_testimonial;?>; }
+         	.box-wrap .infobar.flow, .box-wrap .infobar.type-flow { background: <?php echo $info_bar_flow;?>; }
          	nav ul.navbar-nav li {background: <?php echo $grijs;?>;}
          	nav ul.navbar-nav .dropdown-menu li a {background: <?php echo $grijs;?>; }
          	.clickable:hover .text {background: <?php echo $main;?>;}

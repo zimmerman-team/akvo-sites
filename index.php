@@ -32,7 +32,7 @@ if ( $type != 'media' || $type != 'video' ) {
 		<a href="<?php the_permalink(); ?>" class="boxlink"></a>
 		<div class="col-sm-6 eq">
 			<div class="text">
-				<h1><?php echo get_the_title(); ?></h1>
+				<h1><?php echo truncate(get_the_title(),45); ?></h1>
 				<?php the_excerpt(); ?>
 			</div>
 		</div>

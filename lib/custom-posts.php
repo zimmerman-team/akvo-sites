@@ -226,13 +226,12 @@ function blokmaker($cols, $types) {
   }
   $type = $types;
   if ($types == 'post') $type = 'news';
-
-  if ($cols == 12) $size = 'megagroot';
-  elseif ($cols == 6) $size = 'middel';
-  elseif ($cols == 9) $size = 'groot';
-  else $size = 'klein';
   $title = get_the_title();
-  $title = truncate($title,10);
+  if ($cols == 12) {$size = 'megagroot'; $title = truncate($title,180);}
+  elseif ($cols == 6) {$size = 'middel'; $title = truncate($title,80);}
+  elseif ($cols == 9) {$size = 'groot'; $title = truncate($title,140);}
+  else {$size = 'klein'; $title = truncate($title,50);}
+  
   ?>
   <div class="col-md-<?php echo $cols; ?> eq">
     <div class="box-wrap <?php echo $size; ?> <?php if(is_front_page()) echo 'home'; ?>">
@@ -258,6 +257,16 @@ function akvo_custom_thumbnail_size(){
     add_image_size( 'thumb-small', 224, 126, true ); // Hard crop to exact dimensions (crops sides or top and bottom)
     add_image_size( 'thumb-medium', 320, 180, true ); 
     add_image_size( 'thumb-large', 480, 480, true );
+}
+
+function show_flickr($id,$handle) {
+  $output = "<style>.embed-container { position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>";
+  $output .= "<div class='flickr'><div class='embed-container'><iframe src='https://www.flickr.com/photos/";
+  $output .= $handle;
+  $output .= "/sets/";
+  $output .= $id;
+  $output .= "/player/' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div></div>";
+  return $output;
 }
 
 ?>

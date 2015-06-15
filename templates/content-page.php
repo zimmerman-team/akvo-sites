@@ -1,4 +1,8 @@
 <?php
+$yt = get_post_meta( get_the_ID(), '_channels_youtube', true );
+$flickr = get_post_meta( get_the_ID(), '_channels_flickr', true );
+$flickr_handle = get_post_meta( get_the_ID(), '_channels_flickr_handle', true );
+
 if (is_page('contact')  && (function_exists( 'ninja_forms_display_form' ) ) ) {
     $test = true;
     ?><div class="col-md-9 article"><?php
@@ -45,6 +49,17 @@ else {
                  	<?php the_content(); ?>
                 </div>
             </div>
+            <?php if (!empty($yt)) { ?>
+            <div class="col-lg-12">
+                <?php echo do_shortcode($yt); ?>
+            </div>
+            <?php } ?>
+
+            <?php if (!empty($flickr)) { ?>
+            <div class="col-lg-12">
+                <?php echo show_flickr($flickr,$flickr_handle); ?>
+            </div>
+            <?php } ?>
         </div>
 	</div>
 </div>

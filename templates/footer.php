@@ -3,6 +3,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
+				<?php if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+          		if ( is_plugin_active( 'devbuddy-twitter-feed/devbuddy-twitter-feed.php' ) ) { ?>
+					<section>
+						<h3>Latest on Twitter</h3>
+						<?php db_twitter_feed() ?>
+					</section>
+				<?php } ?>
 					<?php dynamic_sidebar('sidebar-footer-high'); ?>
 				</div>
 			</div>

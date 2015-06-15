@@ -1,5 +1,10 @@
 <?php
 $attached = get_post_meta( get_the_ID(), 'attached_cmb2_attached_posts', true );
+
+$yt = get_post_meta( get_the_ID(), '_channels_youtube', true );
+$flickr = get_post_meta( get_the_ID(), '_channels_flickr', true );
+$flickr_handle = get_post_meta( get_the_ID(), '_channels_flickr_handle', true );
+
 if(!empty($attached)) { ?>
 <div class="col-md-9">
 <?php } else { ?>
@@ -93,8 +98,21 @@ if(!empty($attached)) { ?>
             </div>
           </div>
         </div>
-        <?php if ($type == 'flow' || $type == 'map') {
+        <?php if (!empty($yt)) { ?>
+            <div class="col-lg-12">
+                <?php echo do_shortcode($yt); ?>
+            </div>
+            <?php } ?>
+
+            <?php if (!empty($flickr)) { ?>
+            <div class="col-lg-12">
+                <?php echo show_flickr($flickr,$flickr_handle); ?>
+            </div>
+            <?php } ?>
+
+        <?php if (in_array($type, array('post','page','map','flow') )) {
           $url = get_post_meta( get_the_ID(), '_flow_url_url', true );
+          if (!empty($url)) {
           ?>
           <div class="col-md-12">
             <div class="iframe-wrap">
@@ -102,6 +120,7 @@ if(!empty($attached)) { ?>
             </div>
           </div>
           <?php
+          }
         } ?>
       </div>
     </div>

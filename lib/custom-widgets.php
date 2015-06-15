@@ -129,6 +129,7 @@ class post_widget extends WP_Widget {
         <option <?php if ( 'testimonial' == $instance['type'] ) echo 'selected="selected"'; ?>>testimonial</option>
         <option <?php if ( 'project' == $instance['type'] ) echo 'selected="selected"'; ?>>project</option>
         <option <?php if ( 'map' == $instance['type'] ) echo 'selected="selected"'; ?>>map</option>
+        <option <?php if ( 'flow' == $instance['type'] ) echo 'selected="selected"'; ?>>flow</option>
       </select>
     </p>
 
