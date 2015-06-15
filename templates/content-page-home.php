@@ -43,7 +43,7 @@ if ( $query_carousel->have_posts() ) { ?>
 						?>
 						<div class="col-sm-6">
 							<div class="pic">
-								<?php the_post_thumbnail( 'large' ); ?>
+								<?php the_post_thumbnail( 'thumb-large' ); ?>
 							</div>
 						</div>
 						<div class="col-sm-6">

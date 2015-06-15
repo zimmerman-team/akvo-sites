@@ -40,7 +40,7 @@ if ( $type != 'media' || $type != 'video' ) {
 			<div class="pic">
 				<?php 
 				if (has_post_thumbnail()) {
-					the_post_thumbnail( 'large' ); 
+					the_post_thumbnail( 'thumb-large' ); 
 				}
 				else {
 					?><img src="<?= get_template_directory_uri(); ?>/dist/images/placeholder800x400.jpg"><?php

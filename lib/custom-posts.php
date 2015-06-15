@@ -215,7 +215,9 @@ function blokmaker($cols, $types) {
   else {
     if (has_post_thumbnail()) {
       $thumb_id = get_post_thumbnail_id();
-      $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-medium', true);
+      if ($cols == 12) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-xlarge', true);
+      if ($cols == 9) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-large', true);
+      else $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-medium', true);
       $thumb = $thumb_url_array[0];
       $thumb = '<img src="'.$thumb.'">';
     }
@@ -256,7 +258,8 @@ add_action( 'after_setup_theme', 'akvo_custom_thumbnail_size' );
 function akvo_custom_thumbnail_size(){
     add_image_size( 'thumb-small', 224, 126, true ); // Hard crop to exact dimensions (crops sides or top and bottom)
     add_image_size( 'thumb-medium', 320, 180, true ); 
-    add_image_size( 'thumb-large', 480, 480, true );
+    add_image_size( 'thumb-large', 640, 360, true );
+    add_image_size( 'thumb-xlarge', 960, 540, true );
 }
 
 function show_flickr($id,$handle) {
