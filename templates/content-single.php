@@ -118,7 +118,7 @@ if(!empty($attached)) { ?>
             <div style="padding:0 15px;">
               <iframe id="responive_iframe" src="<?php echo $url; ?>" frameborder="0" allowfullscreen width="100%" scrolling="no"></iframe>
               <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/iframeResizer.min.js"></script>
-              <script>iFrameResize({log:true})</script>
+              <script>iFrameResize({log:false})</script>
             </div>
           </div>
           <?php
