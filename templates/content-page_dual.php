@@ -35,17 +35,6 @@ $flickr_handle = get_post_meta( get_the_ID(), '_channels_flickr_handle', true );
             <div class="col-lg-12">
                 <?php echo show_flickr($flickr,$flickr_handle); ?>
             </div>
-            <?php } 
-            $url = get_post_meta( get_the_ID(), '_flow_url_url', true );
-            if (!empty($url)) {
-            ?>
-            <div class="col-md-12">
-                <div style="padding:0 15px;">
-                    <iframe id="responive_iframe" src="<?php echo $url; ?>" frameborder="0" allowfullscreen width="100%" scrolling="no"></iframe>
-                    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/iframeResizer.min.js"></script>
-                    <script>iFrameResize({log:false})</script>
-                </div>
-            </div>
             <?php } ?>
 
         </div>

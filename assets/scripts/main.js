@@ -21,7 +21,7 @@
         // JavaScript to be fired on all pages
       },
       finalize: function() {
-        alert('test');
+
       }
     },
     // Home page
@@ -68,7 +68,6 @@
 
       // Fire common finalize JS
       UTIL.fire('common', 'finalize');
-
     }
   };
 

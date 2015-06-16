@@ -242,9 +242,9 @@ function blokmaker($cols, $types) {
   if ($types == 'post') $type = 'news';
   $title = get_the_title();
   if ($cols == 12) {$size = 'megagroot'; $title = truncate($title,180);}
-  elseif ($cols == 6) {$size = 'middel'; $title = truncate($title,70);}
-  elseif ($cols == 9) {$size = 'groot'; $title = truncate($title,130);}
-  else {$size = 'klein'; $title = truncate($title,40);}
+  elseif ($cols == 6) {$size = 'middel'; $title = truncate($title,80);}
+  elseif ($cols == 9) {$size = 'groot'; $title = truncate($title,140);}
+  else {$size = 'klein'; $title = truncate($title,50);}
   
   ?>
   <div class="col-md-<?php echo $cols; ?> eq">
