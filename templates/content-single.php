@@ -110,7 +110,7 @@ if(!empty($attached)) { ?>
             </div>
             <?php } ?>
 
-        <?php if (in_array($type, array('post','page','map','flow') )) {
+        <?php if (in_array($type, array('post','map','flow') )) {
           $url = get_post_meta( get_the_ID(), '_flow_url_url', true );
           if (!empty($url)) {
           ?>
