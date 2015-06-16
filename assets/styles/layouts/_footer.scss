@@ -19,6 +19,7 @@
 	.current {
 		background-color: $primary-light;
 		color:$brand-primary;
+		border-color:$grijs !important;
 	}
 	span:last-child, a:last-child {
 		border-right:1px solid $grijs;
