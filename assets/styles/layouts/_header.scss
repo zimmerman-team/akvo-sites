@@ -146,6 +146,7 @@ nav {
 				display: none;
 				float: left;
 				li {
+					width:100%;
 					text-indent: 0;
 					background: $primary-light;
 					&.current-menu-item {
