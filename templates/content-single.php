@@ -110,13 +110,15 @@ if(!empty($attached)) { ?>
             </div>
             <?php } ?>
 
-        <?php if (in_array($type, array('post','page','map','flow') )) {
+        <?php if (in_array($type, array('post','map','flow') )) {
           $url = get_post_meta( get_the_ID(), '_flow_url_url', true );
           if (!empty($url)) {
           ?>
           <div class="col-md-12">
-            <div class="iframe-wrap">
-              <iframe src="<?php echo $url; ?>" frameborder="0" allowfullscreen></iframe>
+            <div style="padding:0 15px;">
+              <iframe id="responive_iframe" src="<?php echo $url; ?>" frameborder="0" allowfullscreen width="100%" scrolling="no"></iframe>
+              <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/scripts/iframeResizer.min.js"></script>
+              <script>iFrameResize({log:false})</script>
             </div>
           </div>
           <?php
