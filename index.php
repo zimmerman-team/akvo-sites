@@ -68,6 +68,10 @@ if ( $type != 'media' || $type != 'video' ) {
 
 <?php } 
 
+$blog_id = get_theme_mod('filter_blog');
+$news_id = get_theme_mod('filter_news');
+$media_id = get_theme_mod('filter_media');
+
 if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty($media_id)) || (is_post_type_archive('blog') && !empty($blog_id))) { 
 	$filter = true;
 	?>
@@ -102,9 +106,6 @@ if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty
 </div>
 
 <?php
-$blog_id = get_theme_mod('filter_blog');
-$news_id = get_theme_mod('filter_news');
-$media_id = get_theme_mod('filter_media');
 if ( is_post_type_archive('blog') && !empty($blog_id) ) { ?>
 	<div class="col-md-3">
 		<div class="filters">
