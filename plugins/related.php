@@ -25,7 +25,7 @@ function cmb2_attached_posts_field_metaboxes_example() {
 	$example_meta = new_cmb2_box( array(
 		'id'           => 'cmb2_attached_posts_field',
 		'title'        => __( 'Attached Posts', 'cmb2' ),
-		'object_types' => array( 'blog' ), // Post type
+		'object_types' => array( 'blog' , 'post'), // Post type
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_names'   => false, // Show field names on the left
