@@ -10,9 +10,12 @@
 if ( is_post_type_archive('media') ) $type = 'media';
 elseif ( is_post_type_archive('blog') ) $type = 'blog';
 elseif ( is_post_type_archive('video') ) $type = 'video';
+elseif ( is_post_type_archive('map') ) $type = 'map';
+elseif ( is_post_type_archive('testimonial') ) $type = 'testimonial';
+elseif ( is_post_type_archive('flow') ) $type = 'flow';
 else $type = 'post';
 
-if ( $type != 'media' || $type != 'video' ) {
+if ( $type == 'post' || $type == 'blog' ) {
 
 	//query voor sticky/featured voor in de top balk
 	$args = array(
@@ -68,11 +71,11 @@ if ( $type != 'media' || $type != 'video' ) {
 
 <?php } 
 
-$blog_id = get_theme_mod('filter_blog');
-$news_id = get_theme_mod('filter_news');
-$media_id = get_theme_mod('filter_media');
+$blogid = get_theme_mod('filter_blog');
+$newsid = get_theme_mod('filter_news');
+$mediaid = get_theme_mod('filter_media');
 
-if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty($media_id)) || (is_post_type_archive('blog') && !empty($blog_id))) { 
+if ( (is_home() && !empty($newsid)) || (is_post_type_archive('media') && !empty($mediaid)) || (is_post_type_archive('blog') && !empty($blogid))) { 
 	$filter = true;
 	?>
 <div class="col-md-9">
@@ -106,27 +109,28 @@ if ( (is_home() && !empty($news_id)) || (is_post_type_archive('media') && !empty
 </div>
 
 <?php
-if ( is_post_type_archive('blog') && !empty($blog_id) ) { ?>
+
+if ( is_post_type_archive('blog') && !empty($blogid) ) { ?>
 	<div class="col-md-3">
 		<div class="filters">
 			<h4>Filter</h4>
-			<?php echo do_shortcode( "[ULWPQSF id=$blog_id formtitle=0]" ); ?>
+			<?php echo do_shortcode( "[ULWPQSF id=$blogid formtitle=0]" ); ?>
 		</div>
 	</div>
 <?php }
-elseif ( is_post_type_archive('media') && !empty($media_id) ) { ?>
+elseif ( is_post_type_archive('media') && !empty($mediaid) ) { ?>
  	<div class="col-md-3">
 		<div class="filters">
 			<h4>Filter</h4>
-			<?php echo do_shortcode( "[ULWPQSF id=$media_id formtitle=0]" ); ?>
+			<?php echo do_shortcode( "[ULWPQSF id=$mediaid formtitle=0]" ); ?>
 		</div>
 	</div>
 <?php }
-elseif ( is_home() && !empty($news_id) ) { ?>
+elseif ( is_home() && !empty($newsid) ) { ?>
 	<div class="col-md-3">
 		<div class="filters">
 			<h4>Filter</h4>
-			<?php echo do_shortcode( "[ULWPQSF id=$news_id formtitle=0]" ); ?>
+			<?php echo do_shortcode( "[ULWPQSF id=$newsid formtitle=0]" ); ?>
 		</div>
 	</div>
 <?php } ?>

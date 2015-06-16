@@ -202,15 +202,26 @@ function blokmaker($cols, $types) {
     $thumb = '<img src="'.$thumb.'">';
   }
   elseif ($types == 'media') {
-    $filename = get_post_meta( get_the_ID(), '_media_lib_file', true );
-    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-    if ($ext == 'pdf') $fa = 'fa-file-pdf-o';
-    elseif (in_array($ext, array('doc','docx'), true )) $fa = 'fa-file-word-o';
-    elseif (in_array($ext, array('xls','xlsx'), true )) $fa = 'fa-file-excel-o';
-    elseif (in_array($ext, array('ppt','pptx'), true )) $fa = 'fa-file-powerpoint-o';
-    elseif (in_array($ext, array('zip','rar','7z'), true )) $fa = 'fa-file-archive-o';
-    else $fa = 'fa-file-o';
-    $thumb = '<div class="icon-wrap"><i class="fa fa-inverse fa-4x '.$fa.'"></i></div>';
+    if (has_post_thumbnail()) {
+      $thumb_id = get_post_thumbnail_id();
+      if ($cols == 12) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-xlarge', true);
+      if ($cols == 9) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-large', true);
+      else $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-medium', true);
+      //var_dump($thumb_id);
+      $thumb = $thumb_url_array[0];
+      $thumb = '<img src="'.$thumb.'">';
+    }
+    else {
+      $filename = get_post_meta( get_the_ID(), '_media_lib_file', true );
+      $ext = pathinfo($filename, PATHINFO_EXTENSION);
+      if ($ext == 'pdf') $fa = 'fa-file-pdf-o';
+      elseif (in_array($ext, array('doc','docx'), true )) $fa = 'fa-file-word-o';
+      elseif (in_array($ext, array('xls','xlsx'), true )) $fa = 'fa-file-excel-o';
+      elseif (in_array($ext, array('ppt','pptx'), true )) $fa = 'fa-file-powerpoint-o';
+      elseif (in_array($ext, array('zip','rar','7z'), true )) $fa = 'fa-file-archive-o';
+      else $fa = 'fa-file-o';
+      $thumb = '<div class="icon-wrap"><i class="fa fa-inverse fa-4x '.$fa.'"></i></div>';
+    }
   }
   else {
     if (has_post_thumbnail()) {
