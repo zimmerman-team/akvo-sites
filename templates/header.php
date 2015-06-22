@@ -38,7 +38,7 @@
           <?php 
           if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
           if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) { ?>
-          <div class="visible-xs">
+          <div class="visible-xs langbar">
           <?php do_action('icl_language_selector');  ?>
           </div>
           <?php } ?>
@@ -58,10 +58,12 @@
           endif;
           if ( is_plugin_active( 'google-website-translator/google-website-translator.php' ) && !is_user_logged_in() ) { ?>
             <div style="display:none;"><?php echo do_shortcode('[prisna-google-website-translator]'); ?></div>
-          <?php } 
-          elseif (is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' )) {
-            do_action('icl_language_selector'); 
-          } ?>
+          <?php 
+          } 
+          // elseif (is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' )) {
+          //   do_action('icl_language_selector'); 
+          // } 
+          ?>
 
         </nav>
       </div>

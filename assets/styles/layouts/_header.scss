@@ -187,14 +187,22 @@ nav {
 	}
 }
 
-.visible-xs {
+.langbar {
 	.lang_sel_click {
 		position:relative;
 		float: right;
 		margin-top: 15px;
 		.iclflag {
 			margin-right:5px;
-			top:0 !important;
+			top:-1px !important;
 		}
+	}
+}
+
+@media (min-width: $screen-md-min) {
+	.langbar {
+		position: absolute;
+		right: 25px;
+		top: 7px;
 	}
 }
