@@ -199,10 +199,11 @@ nav {
 	}
 }
 
-@media (min-width: $screen-md-min) {
+@media (min-width: $screen-sm-min) {
 	.langbar {
 		position: absolute;
 		right: 25px;
 		top: 7px;
+		margin-top:0;
 	}
 }
