@@ -204,6 +204,8 @@ nav {
 		position: absolute;
 		right: 25px;
 		top: 7px;
-		margin-top:0;
+		.lang_sel_click {
+			margin-top:0;
+		}
 	}
 }
