@@ -9,6 +9,16 @@ $flickr_handle = get_post_meta( get_the_ID(), '_channels_flickr_handle', true );
 	<div class="bg">
         <div class="main-image">
           <?php the_post_thumbnail( 'large' ); ?>
+          <?php
+            $map = get_post_meta( get_the_ID(), '_map_option_address', true );
+            if(!empty($map)) {
+                flexmap_show_map(array(
+                    'width' => '100%',
+                    'height' => '400px',
+                    'address' => $map
+                ));
+            } 
+        ?>
         </div>
 
         <div class="row">

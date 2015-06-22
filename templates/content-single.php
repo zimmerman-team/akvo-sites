@@ -28,7 +28,15 @@ if(!empty($attached)) { ?>
         elseif ($type == 'map') {
 
         }
-        else the_post_thumbnail( 'large' );       
+        else the_post_thumbnail( 'large' );
+        $map = get_post_meta( get_the_ID(), '_map_option_address', true );
+        if(!empty($map)) {
+            flexmap_show_map(array(
+                'width' => '100%',
+                'height' => '400px',
+                'address' => $map
+            ));
+        }        
         ?>
       </div>
       <div class="row">
