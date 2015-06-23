@@ -135,17 +135,8 @@ if(!empty($attached)) { ?>
       </div>
     </div>
 
-    <!-- <footer>
-      <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
-    </footer> -->
     <?php if ($type == 'post' || $type == 'blog') { ?>
-    <div class="bg">
-      <div class="row">
-        <div class="col-lg-10 col-lg-offset-1">
-            <?php comments_template('/templates/comments.php'); ?>
-        </div>
-      </div>
-    </div>
+      <?php comments_template('/templates/comments.php'); ?>
     <?php } ?>
 
   </article>

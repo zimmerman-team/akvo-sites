@@ -205,7 +205,7 @@ function blokmaker($cols, $types) {
     if (has_post_thumbnail()) {
       $thumb_id = get_post_thumbnail_id();
       if ($cols == 12) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-xlarge', true);
-      if ($cols == 9) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-large', true);
+      if ($cols == 9 || $cols == 8) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-large', true);
       else $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-medium', true);
       //var_dump($thumb_id);
       $thumb = $thumb_url_array[0];
@@ -227,7 +227,7 @@ function blokmaker($cols, $types) {
     if (has_post_thumbnail()) {
       $thumb_id = get_post_thumbnail_id();
       if ($cols == 12) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-xlarge', true);
-      if ($cols == 9) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-large', true);
+      if ($cols == 9 || $cols == 8) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-large', true);
       else $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-medium', true);
       //var_dump($thumb_id);
       $thumb = $thumb_url_array[0];
@@ -242,9 +242,11 @@ function blokmaker($cols, $types) {
   if ($types == 'post') $type = 'news';
   $title = get_the_title();
   if ($cols == 12) {$size = 'megagroot'; $title = truncate($title,180);}
-  elseif ($cols == 6) {$size = 'middel'; $title = truncate($title,70);}
   elseif ($cols == 9) {$size = 'groot'; $title = truncate($title,130);}
-  else {$size = 'klein'; $title = truncate($title,40);}
+  elseif ($cols == 8) {$size = 'groot'; $title = truncate($title,100);}
+  elseif ($cols == 6) {$size = 'middel'; $title = truncate($title,70);}
+  elseif ($cols == 4) {$size = 'middel'; $title = truncate($title,40);}
+  else {$size = 'klein'; $title = truncate($title,35);}
   
   ?>
   <div class="col-md-<?php echo $cols; ?> eq">

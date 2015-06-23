@@ -166,7 +166,7 @@ a {
 		text-align: center;
 		margin:10px 15px;
 		background: darken($grijs,15%);
-		padding: 20px 15px;
+		padding: 46px 15px;
 	}
 	&.home {
 		width: 100%;
@@ -288,6 +288,12 @@ a {
 	$line-height: 1.63;
 	$lines-to-show: 5;
 
+	.carousel {
+		img {
+			width: auto;
+			height: 100%;
+		}
+	}
 	
 	.dual {
 		 -webkit-column-count: 2; /* Chrome, Safari, Opera */
@@ -363,6 +369,15 @@ a {
 					background-color: $brand-primary;
 				}
 			}
+		}
+	}
+}
+
+@media (min-width: $screen-lg-min) {
+	.carousel {
+		img {
+			width: 100%;
+			height: auto;
 		}
 	}
 }
