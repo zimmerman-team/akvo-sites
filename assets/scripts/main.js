@@ -18,7 +18,7 @@
     // All pages
     'common': {
       init: function() {
-        // JavaScript to be fired on all pages
+
       },
       finalize: function() {
 
@@ -31,6 +31,12 @@
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
+        var ht = $('.box-wrap.static img').height();
+        $('.box-wrap.dyno .thumb-wrapper').css({'height':ht+'px'});
+        window.addEventListener('resize', function(event){
+          var ht = $('.box-wrap.static img').height();
+          $('.box-wrap.dyno .thumb-wrapper').css({'height':ht+'px'});
+        });
       }
     },
     // About us page, note the change from about-us to about_us.

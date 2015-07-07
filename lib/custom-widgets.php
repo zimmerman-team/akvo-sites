@@ -21,6 +21,7 @@ function remove_default_widgets() {
 /**
  * Adds widget.
  */
+
 class post_widget extends WP_Widget {
 
   /**
@@ -43,11 +44,9 @@ class post_widget extends WP_Widget {
   function widget( $args, $instance ) {
     extract( $args );
 
-    if (!isset($do_not_duplicate)) {
-      global $do_not_duplicate;
-      $do_not_duplicate[] = "";
-    }
+    if (!isset($GLOBALS['do_not_duplicate'])) $GLOBALS['do_not_duplicate'][] = "";
 
+    if (!isset($GLOBALS['counter'])) $GLOBALS['counter'] = 0;
 
     /* Our variables from the widget settings. */
     $columns = $instance['columns'];
@@ -56,18 +55,10 @@ class post_widget extends WP_Widget {
     /* Before widget (defined by themes). */
     //echo $before_widget;
 
-    //hier inhoud
-    $type2 = $type;
-    if ($type == 'news') {
-      $type2 = 'post';
-    }
-    $qargs = array(
-      'post_type' => $type2,
-      'posts_per_page' => 1,
-      'post__not_in' => $do_not_duplicate
-    );
+    //rsr update gedoe
+
     if ($columns == 4) {
-      $amount = 12;
+        $amount = 12;
     }
     elseif ($columns == 2) {
       $amount = 6;
@@ -78,17 +69,47 @@ class post_widget extends WP_Widget {
     else {
       $amount = 3;
     }
-    $query = new WP_Query( $qargs );
-    if ( $query->have_posts() ) { 
-      while ( $query->have_posts() ) {
+    if ($type == 'project') {
+      $c = $GLOBALS['counter'];
+      $data = do_shortcode('[data_feed name="rsr"]');
+      $data = json_decode( str_replace('&quot;', '"', $data) );
+      $objects = $data->objects;
+      $title = $objects[$c]->title;
+      $text = $objects[$c]->text;
+      $date = date('d M Y',strtotime($objects[$c]->time));
+      $thumb = 'http://rsr.akvo.org'.$objects[$c]->photo;
+      $link = 'http://rsr.akvo.org'.$objects[$c]->absolute_url;
+      $type = 'RSR update';
 
-        $query->the_post();
+      $GLOBALS['counter']++;
 
-        blokmaker($amount, $type2);
+      blokmaker_rsr($amount, $type, $title, $text, $date, $thumb, $link);
+    }
 
-        $do_not_duplicate[] = get_the_ID();  
+    else {
+
+      //hier inhoud
+      $type2 = $type;
+      if ($type == 'news') {
+        $type2 = 'post';
       }
-      wp_reset_postdata();
+      $qargs = array(
+        'post_type' => $type2,
+        'posts_per_page' => 1,
+        'post__not_in' => $GLOBALS['do_not_duplicate']
+      );
+      $query = new WP_Query( $qargs );
+      if ( $query->have_posts() ) { 
+        while ( $query->have_posts() ) {
+
+          $query->the_post();
+
+          blokmaker($amount, $type2);
+
+          $GLOBALS['do_not_duplicate'][] = get_the_ID();  
+        }
+        wp_reset_postdata();
+      }
     }
 
     /* After widget (defined by themes). */
@@ -123,13 +144,13 @@ class post_widget extends WP_Widget {
     <p>
       <label for="<?php echo $this->get_field_id( 'type' ); ?>"><?php _e('Type:', 'single_post'); ?></label> 
       <select id="<?php echo $this->get_field_id( 'type' ); ?>" name="<?php echo $this->get_field_name( 'type' ); ?>" class="widefat" style="width:100%;">
-        <option <?php if ( 'news' == $instance['type'] ) echo 'selected="selected"'; ?>>news</option>
-        <option <?php if ( 'blog' == $instance['type'] ) echo 'selected="selected"'; ?>>blog</option>
-        <option <?php if ( 'video' == $instance['type'] ) echo 'selected="selected"'; ?>>video</option>
-        <option <?php if ( 'testimonial' == $instance['type'] ) echo 'selected="selected"'; ?>>testimonial</option>
-        <option <?php if ( 'project' == $instance['type'] ) echo 'selected="selected"'; ?>>project</option>
-        <option <?php if ( 'map' == $instance['type'] ) echo 'selected="selected"'; ?>>map</option>
-        <option <?php if ( 'flow' == $instance['type'] ) echo 'selected="selected"'; ?>>flow</option>
+        <option <?php if ( 'news' == $instance['type'] ) echo 'selected="selected"'; ?> value="news">news</option>
+        <option <?php if ( 'blog' == $instance['type'] ) echo 'selected="selected"'; ?> value="blog">blog</option>
+        <option <?php if ( 'video' == $instance['type'] ) echo 'selected="selected"'; ?> value="video">video</option>
+        <option <?php if ( 'testimonial' == $instance['type'] ) echo 'selected="selected"'; ?> value="testimonial">testimonial</option>
+        <option <?php if ( 'project' == $instance['type'] ) echo 'selected="selected"'; ?> value="project">RSR update</option>
+        <option <?php if ( 'map' == $instance['type'] ) echo 'selected="selected"'; ?> value="map">map</option>
+        <option <?php if ( 'flow' == $instance['type'] ) echo 'selected="selected"'; ?> value="flow">flow</option>
       </select>
     </p>
 

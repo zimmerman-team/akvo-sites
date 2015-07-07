@@ -102,26 +102,6 @@ function create_post_type() {
     )
   );
 
-  register_post_type( 'poject',
-    array(
-      'labels' => array(
-        'name' => __( 'Project updates' ),
-        'singular_name' => __( 'Project update' )
-      ),
-      'public' => true,
-      'has_archive' => true,
-      'menu_position' => 20,
-      'menu_icon' => 'dashicons-hammer',
-      'supports' => array(
-        'title',
-        'editor',
-        'author', 
-        'thumbnail', 
-        'excerpt', 
-      ),
-    )
-  );
-
   register_post_type( 'flow',
     array(
       'labels' => array(
@@ -239,7 +219,7 @@ function blokmaker($cols, $types) {
     }
   }
   $type = $types;
-  if ($types == 'post') $type = 'news';
+  if ($types == 'post' || !isset($types)) $type = 'news';
   $title = get_the_title();
   if ($cols == 12) {$size = 'megagroot'; $title = truncate($title,180);}
   elseif ($cols == 9) {$size = 'groot'; $title = truncate($title,130);}
@@ -250,14 +230,14 @@ function blokmaker($cols, $types) {
   
   ?>
   <div class="col-md-<?php echo $cols; ?> eq">
-    <div class="box-wrap <?php echo $size; ?> <?php if(is_front_page()) echo 'home'; ?>">
+    <div class="box-wrap static <?php echo $size; ?> <?php if(is_front_page()) echo 'home'; ?>">
       <a href="<?php the_permalink(); ?>" class="boxlink"></a>
       <div class="header-wrap">
         <h2><?php echo $title; ?></h2>
       </div>
       <div <?php post_class('infobar'); ?>>
         <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>
-        <span class="type"><?php echo $type; ?></span>
+        <span class="type"><span class="hidden-md"><?php echo $type; ?></span></span>
       </div>
       <?php echo $thumb; ?>
       <div class="excerpt">
@@ -266,6 +246,38 @@ function blokmaker($cols, $types) {
     </div>
   </div>
   <?php
+}
+
+function blokmaker_rsr($cols, $type, $title, $text, $date, $thumb, $link) {
+
+  if ($cols == 12) {$title = truncate($title,180); $text = truncate($text,200); }
+  elseif ($cols == 9) {$title = truncate($title,130); $text = truncate($text,170); }
+  elseif ($cols == 8) {$title = truncate($title,100); $text = truncate($text,150); }
+  elseif ($cols == 6) {$title = truncate($title,70); $text = truncate($text,110); }
+  elseif ($cols == 4) {$title = truncate($title,40); $text = truncate($text,95); }
+  else { $title = truncate($title,35); $text = truncate($text,85); }
+
+  ?>
+  <div class="col-md-<?php echo $cols; ?> eq">
+    <div class="box-wrap dyno <?php if(is_front_page()) echo 'home'; ?>">
+      <a href="<?php echo $link; ?>" class="boxlink" target="_blank"></a>
+      <div class="header-wrap">
+        <h2><?php echo $title; ?></h2>
+      </div>
+      <div class="infobar update">
+        <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?php echo $date; ?></time>
+        <span class="type"><span class="hidden-md"><?php echo $type; ?></span></span>
+      </div>
+      <div class="thumb-wrapper">
+        <img src="<?php echo $thumb; ?>">
+      </div>
+      <div class="excerpt">
+        <?php echo $text; ?>
+      </div>
+    </div>
+  </div>
+  <?php
+
 }
 
 add_action( 'after_setup_theme', 'akvo_custom_thumbnail_size' );

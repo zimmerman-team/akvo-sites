@@ -45,6 +45,15 @@ article, .article {
 	display: none;
 }
 
+.thumb-wrapper {
+	overflow:hidden;
+	width:100%;
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
 @media (min-width: $screen-md-min) {
 	article, .article {
 		.meta {
