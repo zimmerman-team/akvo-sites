@@ -250,12 +250,12 @@ function blokmaker($cols, $types) {
 
 function blokmaker_rsr($cols, $type, $title, $text, $date, $thumb, $link) {
 
-  if ($cols == 12) {$title = truncate($title,180); $text = truncate($text,200); }
-  elseif ($cols == 9) {$title = truncate($title,130); $text = truncate($text,170); }
-  elseif ($cols == 8) {$title = truncate($title,100); $text = truncate($text,150); }
-  elseif ($cols == 6) {$title = truncate($title,70); $text = truncate($text,110); }
-  elseif ($cols == 4) {$title = truncate($title,40); $text = truncate($text,95); }
-  else { $title = truncate($title,35); $text = truncate($text,85); }
+  if ($cols == 12) {$title = truncate($title,180); $text = truncate($text,400); }
+  elseif ($cols == 9) {$title = truncate($title,130); $text = truncate($text,300); }
+  elseif ($cols == 8) {$title = truncate($title,100); $text = truncate($text,260); }
+  elseif ($cols == 6) {$title = truncate($title,70); $text = truncate($text,200); }
+  elseif ($cols == 4) {$title = truncate($title,40); $text = truncate($text,155); }
+  else { $title = truncate($title,35); $text = truncate($text,145); }
 
   ?>
   <div class="col-md-<?php echo $cols; ?> eq">
