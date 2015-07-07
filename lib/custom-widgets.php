@@ -71,12 +71,13 @@ class post_widget extends WP_Widget {
     }
     if ($type == 'project') {
       $c = $GLOBALS['counter'];
+      $date_format = get_option( 'date_format' );
       $data = do_shortcode('[data_feed name="rsr"]');
       $data = json_decode( str_replace('&quot;', '"', $data) );
       $objects = $data->objects;
       $title = $objects[$c]->title;
       $text = $objects[$c]->text;
-      $date = date('d M Y',strtotime($objects[$c]->time));
+      $date = date($date_format,strtotime($objects[$c]->time));
       $thumb = 'http://rsr.akvo.org'.$objects[$c]->photo;
       $link = 'http://rsr.akvo.org'.$objects[$c]->absolute_url;
       $type = 'RSR update';
