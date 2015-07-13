@@ -239,11 +239,30 @@ function media_lib() {
 	) );
 
 	$cmb_media->add_field( array(
-		'name' => __( 'File', 'cmb2' ),
+		'name' => __( 'File 1', 'cmb2' ),
 		'desc' => __( 'Upload the file', 'cmb2' ),
 		'id'   => $prefix . 'file',
 		'type' => 'file',
 	) );
+	$cmb_media->add_field( array(
+		'name' => __( 'File 2', 'cmb2' ),
+		'desc' => __( 'Upload another file', 'cmb2' ),
+		'id'   => $prefix . 'file2',
+		'type' => 'file',
+	) );
+	$cmb_media->add_field( array(
+		'name' => __( 'File 3', 'cmb2' ),
+		'desc' => __( 'Upload another file', 'cmb2' ),
+		'id'   => $prefix . 'file3',
+		'type' => 'file',
+	) );
+	$cmb_media->add_field( array(
+		'name' => __( 'File 4', 'cmb2' ),
+		'desc' => __( 'Upload another file', 'cmb2' ),
+		'id'   => $prefix . 'file4',
+		'type' => 'file',
+	) );
+
 }
 
 

@@ -109,3 +109,28 @@ msgstr ""
 #. Template Name of the plugin/theme
 msgid "Custom Template"
 msgstr ""
+
+
+msgid "news"
+msgstr ""
+
+msgid "blog"
+msgstr ""
+
+msgid "RSR Update"
+msgstr ""
+
+msgid "video"
+msgstr ""
+
+msgid "flow"
+msgstr ""
+
+msgid "testimonial"
+msgstr ""
+
+msgid "map"
+msgstr ""
+
+msgid "media"
+msgstr ""

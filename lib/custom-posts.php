@@ -237,7 +237,7 @@ function blokmaker($cols, $types) {
       </div>
       <div <?php post_class('infobar'); ?>>
         <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?= get_the_date(); ?></time>
-        <span class="type"><span class="hidden-md"><?php echo $type; ?></span></span>
+        <span class="type"><span class="hidden-md"><?php _e($type, 'sage'); ?></span></span>
       </div>
       <?php echo $thumb; ?>
       <div class="excerpt">
@@ -266,7 +266,7 @@ function blokmaker_rsr($cols, $type, $title, $text, $date, $thumb, $link) {
       </div>
       <div class="infobar update">
         <time class="updated date" datetime="<?= get_the_time('c'); ?>"><?php echo $date; ?></time>
-        <span class="type"><span class="hidden-md"><?php echo $type; ?></span></span>
+        <span class="type"><span class="hidden-md"><?php _e($type, 'sage'); ?></span></span>
       </div>
       <div class="thumb-wrapper">
         <img src="<?php echo $thumb; ?>">

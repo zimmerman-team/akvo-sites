@@ -63,6 +63,19 @@ if(!empty($attached)) { ?>
                   $id = get_the_ID();
                   $author = get_post_meta( $id, '_media_lib_author', true );
                   $dld = get_post_meta( $id, '_media_lib_file', true );
+                  $filename = basename($dld).PHP_EOL;
+                  $dld2 = get_post_meta( $id, '_media_lib_file2', true );
+                  $filename2 = basename($dld2).PHP_EOL;
+                  $dld3 = get_post_meta( $id, '_media_lib_file3', true );
+                  $filename3 = basename($dld3).PHP_EOL;
+                  $dld4 = get_post_meta( $id, '_media_lib_file4', true );
+                  $filename4 = basename($dld4).PHP_EOL;
+                  $filearray = [
+                    $dld => $filename,
+                    $dld2 => $filename2,
+                    $dld3 => $filename3,
+                    $dld4 => $filename4
+                  ];
                   $location = get_the_terms( $id, 'countries' );
                   $language = get_the_terms( $id, 'languages' );
                   $category = get_the_terms( $id, 'category' );
@@ -98,7 +111,15 @@ if(!empty($attached)) { ?>
                   }
                   ?></p>
                   <?php } ?>
-                  <p><a href="<?php echo $dld; ?>" class="btn btn-default">Download</a></p>
+                  <p>
+                  <?php 
+                  foreach ($filearray as $file => $name) {
+                    if (!empty($file)) {
+                      echo "<a href=\"$file\" class=\"btn btn-default\">$name</a> ";
+                    }
+                  }
+                  ?>
+                  </p>
                   <?php
                 } ?>
                 

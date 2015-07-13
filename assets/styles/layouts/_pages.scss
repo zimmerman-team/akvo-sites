@@ -317,6 +317,9 @@ a {
 		&:hover {
 			background: $grijs;
 		}
+		.icon-wrap {
+			padding: 24px 15px;
+		}
 	}
 	.carousel {
 		&.featured {
@@ -378,6 +381,11 @@ a {
 		img {
 			width: 100%;
 			height: auto;
+		}
+	}
+	.box-wrap {
+		.icon-wrap {
+			padding: 38px 15px;
 		}
 	}
 }
