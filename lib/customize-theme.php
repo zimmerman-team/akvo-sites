@@ -392,7 +392,7 @@ function mytheme_customize_css()
             .btn-default:focus, .btn-default:hover, .filters #uwpqsf_id #uwpqsf_btn input:focus, .filters #uwpqsf_id #uwpqsf_btn input:hover, footer .fixed, .comment-form footer .custom input[type=submit], .filters #uwpqsf_id #uwpqsf_btn footer .custom input, footer .custom .btn, footer .custom .comment-form input[type=submit], footer .custom .filters #uwpqsf_id #uwpqsf_btn input { background: <?php echo $donker;?>; }
          	.box-wrap, .article .bg, article .bg, .filters, .breadcrumbs, .search-wrap { background: <?php echo $lichtgrijs;?>;}
          	.box-wrap .infobar.blog, .box-wrap .infobar.type-blog { background: <?php echo $info_bar_blog; ?>; }
-         	.box-wrap .infobar.news, .box-wrap .infobar.type-news { background: <?php echo $info_bar_news;?>; }
+         	.box-wrap .infobar.post, .box-wrap .infobar.type-post { background: <?php echo $info_bar_news;?>; }
          	.box-wrap .infobar.video, .box-wrap .infobar.type-video { background: <?php echo $info_bar_video;?>; }
          	.box-wrap .infobar.update, .box-wrap .infobar.type-update { background: <?php echo $info_bar_update;?>; }
          	.box-wrap .infobar.page, .box-wrap .infobar.type-page { background: <?php echo $info_bar_page;?>; }
