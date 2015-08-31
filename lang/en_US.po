@@ -24,7 +24,7 @@ msgid "video"
 msgstr "Video"
 
 msgid "flow"
-msgstr "Flow"
+msgstr "AKVO flow"
 
 msgid "testimonial"
 msgstr "Testimonial"

@@ -181,6 +181,21 @@ function blokmaker($cols, $types) {
     $thumb = convertYoutubeImg(get_post_meta( get_the_ID(), '_video_extra_boxes_url', true ));
     $thumb = '<img src="'.$thumb.'">';
   }
+  elseif ($types == 'testimonial') {
+    if (has_post_thumbnail()) {
+      $thumb_id = get_post_thumbnail_id();
+      if ($cols == 12) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-xlarge', true);
+      if ($cols == 9 || $cols == 8) $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-large', true);
+      else $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumb-medium', true);
+      //var_dump($thumb_id);
+      $thumb = $thumb_url_array[0];
+      $thumb = '<img src="'.$thumb.'">';
+    }
+    else {
+      $thumb = convertYoutubeImg(get_post_meta( get_the_ID(), '_video_extra_boxes_url', true ));
+      $thumb = '<img src="'.$thumb.'">';
+    }
+  }
   elseif ($types == 'media') {
     if (has_post_thumbnail()) {
       $thumb_id = get_post_thumbnail_id();

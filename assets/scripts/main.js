@@ -31,11 +31,17 @@
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
-        var ht = $('.box-wrap.static img').height();
-        $('.box-wrap.dyno .thumb-wrapper').css({'height':ht+'px'});
+        $('.box-wrap.dyno .thumb-wrapper').each(function(){
+          var wt = $(this).innerWidth()-15;
+          var ht = wt / 1.77777778;
+          $(this).css({'height':ht+'px'});
+        });
         window.addEventListener('resize', function(event){
-          var ht = $('.box-wrap.static img').height();
-          $('.box-wrap.dyno .thumb-wrapper').css({'height':ht+'px'});
+           $('.box-wrap.dyno .thumb-wrapper').each(function(){
+            var wt = $(this).innerWidth()-15;
+            var ht = wt / 1.77777778;
+            $(this).css({'height':ht+'px'});
+          });
         });
       }
     },

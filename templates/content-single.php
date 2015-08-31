@@ -15,6 +15,7 @@ if(!empty($attached)) { ?>
   ?>
   <article <?php post_class(); ?>>
     <div class="bg">
+      <?php if ($type != 'media') { ?>
       <div class="main-image">
         <?php 
         if (in_array($type, array('video','testimonial'), true )) {
@@ -39,6 +40,7 @@ if(!empty($attached)) { ?>
         }        
         ?>
       </div>
+      <?php } ?>
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
           <header>
