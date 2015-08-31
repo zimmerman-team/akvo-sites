@@ -145,7 +145,7 @@ function flow_url() {
 
 	$cmb_vid = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
-		'title'         => __( 'Additional fields', 'cmb2' ),
+		'title'         => __( 'Responsive iframe', 'cmb2' ),
 		'object_types'  => array( 'flow','map','post','page'), // Post type
 		'context'       => 'normal',
 		'priority'      => 'high',
@@ -154,9 +154,37 @@ function flow_url() {
 
 	$cmb_vid->add_field( array(
 		'name' => __( 'Iframe URL', 'cmb2' ),
+		'desc' => __( 'Enter the URL you wish to embed as an iframe below the content. This is a responsive iframe, javascript code is needed on the embedded page.', 'cmb2' ),
+		'id'   => $prefix . 'url',
+		'type' => 'text_url',
+	) );
+}
+
+add_action( 'cmb2_init', 'iframe_url' );
+function iframe_url() {
+	$prefix = '_iframe_url_';
+
+	$cmb_iframe = new_cmb2_box( array(
+		'id'            => $prefix . 'metabox',
+		'title'         => __( 'Fixed height iframe', 'cmb2' ),
+		'object_types'  => array( 'flow','map','post','page'), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+	) );
+
+	$cmb_iframe->add_field( array(
+		'name' => __( 'Iframe URL', 'cmb2' ),
 		'desc' => __( 'Enter the URL you wish to embed as an iframe below the content', 'cmb2' ),
 		'id'   => $prefix . 'url',
 		'type' => 'text_url',
+	) );
+
+	$cmb_iframe->add_field( array(
+		'name' => __( 'Iframe height', 'cmb2' ),
+		'desc' => __( 'Specify the iframe height in pixels. Eg. 400.', 'cmb2' ),
+		'id'   => $prefix . 'pix',
+		'type' => 'text',
 	) );
 }
 
